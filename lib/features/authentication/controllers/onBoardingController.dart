@@ -1,3 +1,5 @@
+import 'package:art_selling_platform/features/authentication/views/login/login.dart';
+import 'package:art_selling_platform/features/authentication/views/signup/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +19,7 @@ class Onboardingcontroller extends GetxController {
 
   void nextPage() {
     if (currentPageIndex.value == 2) {
-      //
+      Get.to(() => const LoginScreen());
     } else {
       pageController.jumpToPage(currentPageIndex.value + 1);
     }

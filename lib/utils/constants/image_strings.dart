@@ -11,4 +11,10 @@ class TImageStrings {
       "assets/images/onBoarding/sellingArt.json";
   static const String onBoaringImage4 =
       "assets/images/onBoarding/onBoarding4.json";
+
+  static const String emailSent = "assets/images/authAnimations/emailSent.json";
+  static const String emailConfirmed =
+      "assets/images/authAnimations/emailConfirmed.json";
+  static const String passwordLinkSent =
+      "assets/images/authAnimations/passwordLinkSent.json";
 }
