@@ -1,3 +1,4 @@
+import 'package:art_selling_platform/features/authentication/views/onBoarding/onBoarding.dart';
 import 'package:art_selling_platform/utils/themes/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,16 +19,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
-      home: const HomeScreen(),
+      home: const OnBoarding(),
     );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
