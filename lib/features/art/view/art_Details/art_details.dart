@@ -3,10 +3,13 @@ import 'package:art_selling_platform/features/art/view/art_Details/widgets/botto
 import 'package:art_selling_platform/features/art/view/art_Details/widgets/art_details_with_image_slider.dart';
 import 'package:art_selling_platform/features/art/view/art_Details/widgets/art_meta_data.dart';
 import 'package:art_selling_platform/features/art/view/art_Details/widgets/ratingAndShare.dart';
+import 'package:art_selling_platform/features/art/view/art_reviews/art_reviews.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:iconsax/iconsax.dart';
+import 'package:readmore/readmore.dart';
 
 class ArtDetailsScreen extends StatelessWidget {
   const ArtDetailsScreen({
@@ -54,16 +57,16 @@ class ArtDetailsScreen extends StatelessWidget {
 
                   const TSectionHeader(title: "الوصف", showActionButton: false),
                   const SizedBox(height: TSizes.spaceBtwItems),
-                  // ReadMoreText(
-                  //   "dajmdsk",
-                  //   trimLines: 2,
-                  //   trimCollapsedText: " Show more",
-                  //   trimExpandedText: " Less ",
-                  //   moreStyle:
-                  //       TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
-                  //   lessStyle:
-                  //       TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
-                  // ),
+                  const ReadMoreText(
+                    "هذه االلوحة استغرت شهر لليتم صنعها",
+                    trimLines: 2,
+                    trimCollapsedText: "عرض المزيد",
+                    trimExpandedText: " عرض أقل ",
+                    moreStyle:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                    lessStyle:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                  ),
 
                   //reviews
                   const Divider(),
@@ -78,7 +81,7 @@ class ArtDetailsScreen extends StatelessWidget {
                       ),
                       IconButton(
                           onPressed: () {
-                            // Get.to(() => const PitchReviews());
+                            Get.to(() => const ArtReviewsScreen());
                           },
                           icon: const Icon(
                             Iconsax.arrow_right_3,
