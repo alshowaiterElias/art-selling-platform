@@ -1,5 +1,7 @@
+import 'package:art_selling_platform/features/art/view/cart/cart.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TCartIcon extends StatelessWidget {
@@ -16,7 +18,7 @@ class TCartIcon extends StatelessWidget {
     return Stack(children: [
       IconButton(
           onPressed: () {
-            // Get.to(() => const CartScreen());
+            Get.to(() => const CartScreen());
           },
           icon: Icon(
             Iconsax.shopping_bag,
