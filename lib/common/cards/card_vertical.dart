@@ -2,6 +2,7 @@ import 'package:art_selling_platform/common/custom_shapes/Containers/circularCon
 import 'package:art_selling_platform/common/styles/TShadowStyle.dart';
 import 'package:art_selling_platform/common/texts/art_title.dart';
 import 'package:art_selling_platform/common/texts/art_title_with_icon.dart';
+import 'package:art_selling_platform/features/art/view/art_Details/art_details.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:art_selling_platform/common/icons/favoirate_icon.dart';
@@ -12,6 +13,7 @@ import 'package:art_selling_platform/utils/constants/colors.dart';
 
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:art_selling_platform/utils/helpers/helper.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TCardVertical extends StatelessWidget {
@@ -30,9 +32,7 @@ class TCardVertical extends StatelessWidget {
     final bool isDark = THelperFunctions.isDarkMode(context);
     return GestureDetector(
       onTap: () {
-        // Get.to(() => PitchDetails(
-        //       product: product,
-        //     ));
+        Get.to(() => ArtDetailsScreen());
       },
       child: Container(
         width: 180,
