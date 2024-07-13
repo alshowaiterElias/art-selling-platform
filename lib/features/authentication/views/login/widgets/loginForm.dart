@@ -1,6 +1,6 @@
-import 'package:art_selling_platform/features/art/view/home/home.dart';
 import 'package:art_selling_platform/features/authentication/views/password_config/forgetPassword.dart';
 import 'package:art_selling_platform/features/authentication/views/signup/signup.dart';
+import 'package:art_selling_platform/nav.dart';
 import 'package:art_selling_platform/utils/validators/validiator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -85,7 +85,7 @@ class SignInForm extends StatelessWidget {
               child: ElevatedButton(
                   onPressed: () {
                     // controller.emailAndPasswordSignIn();
-                    Get.to(() => const HomeScreen());
+                    Get.to(() => const NavigationMenu());
                   },
                   child: const Text("تسجيل الدخول")),
             ),

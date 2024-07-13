@@ -1,4 +1,5 @@
 import 'package:art_selling_platform/features/art/view/home/home.dart';
+import 'package:art_selling_platform/features/art/view/store/store.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/helpers/helper.dart';
 import 'package:flutter/material.dart';
@@ -26,8 +27,8 @@ class NavigationMenu extends StatelessWidget {
           onDestinationSelected: (index) =>
               controller.selectedIndex.value = index,
           destinations: const [
-            NavigationDestination(icon: Icon(Iconsax.home), label: "Home"),
-            NavigationDestination(icon: Icon(Iconsax.shop), label: "Shop"),
+            NavigationDestination(icon: Icon(Iconsax.home), label: "الرئيسية"),
+            NavigationDestination(icon: Icon(Iconsax.shop), label: "المتجر"),
             NavigationDestination(
                 icon: Icon(Iconsax.heart), label: "Wish list"),
             NavigationDestination(icon: Icon(Iconsax.user), label: "User"),
@@ -43,7 +44,7 @@ class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
     const HomeScreen(),
-    // const Pitches(),
+    const StoreScreen(),
     // const Wishlist(),
     // const SettingsScreen(),
   ];

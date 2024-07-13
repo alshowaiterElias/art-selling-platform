@@ -8,8 +8,8 @@ import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:art_selling_platform/utils/helpers/helper.dart';
 import 'package:flutter/material.dart';
 
-class TProductDetails extends StatelessWidget {
-  const TProductDetails({
+class TArtestDetails extends StatelessWidget {
+  const TArtestDetails({
     super.key,
     this.onTap,
     this.showBorder = true,
@@ -49,12 +49,12 @@ class TProductDetails extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const TArtTitleWithIcon(
-                    title: "brand.name",
+                    title: "MSA",
                     textSizes: TextSizes.large,
                   ),
                   Text(
                     // "${brand.productsCount ?? 0} products",
-                    "Temp",
+                    "فنانه تشكيلية",
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium,
                   )

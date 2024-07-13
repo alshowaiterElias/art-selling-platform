@@ -15,8 +15,8 @@ import 'package:art_selling_platform/utils/helpers/helper.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TReservationsVertical extends StatelessWidget {
-  const TReservationsVertical({
+class TCardVertical extends StatelessWidget {
+  const TCardVertical({
     super.key,
     // required this.product,
   });

@@ -1,6 +1,5 @@
-import 'package:art_selling_platform/common/cards/reservationCardsVertical.dart';
+import 'package:art_selling_platform/common/cards/card_vertical.dart';
 import 'package:art_selling_platform/common/custom_shapes/Containers/primaryHeaderContainer.dart';
-import 'package:art_selling_platform/common/custom_shapes/Containers/searchBoxContainer.dart';
 import 'package:art_selling_platform/common/layout/gridLayout.dart';
 import 'package:art_selling_platform/common/texts/sectionHeader.dart';
 import 'package:art_selling_platform/features/art/view/home/widgets/homeAppbar.dart';
@@ -9,8 +8,6 @@ import 'package:art_selling_platform/features/art/view/home/widgets/homeSlider.d
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
-
-import 'package:iconsax/iconsax.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -100,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                   TGridLayout(
                       itemCount: 5, //controller.featuredProducts.length,
                       itemBuilder: (_, index) {
-                        return TReservationsVertical(
+                        return TCardVertical(
                             // product: controller.featuredProducts[index],
                             );
                       })
