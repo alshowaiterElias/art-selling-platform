@@ -3,8 +3,6 @@ import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 
-import 'package:get/get.dart';
-
 class THorizantalListSection extends StatelessWidget {
   const THorizantalListSection({
     super.key,

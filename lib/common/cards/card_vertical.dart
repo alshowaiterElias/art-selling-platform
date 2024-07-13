@@ -12,7 +12,6 @@ import 'package:art_selling_platform/utils/constants/colors.dart';
 
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:art_selling_platform/utils/helpers/helper.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TCardVertical extends StatelessWidget {

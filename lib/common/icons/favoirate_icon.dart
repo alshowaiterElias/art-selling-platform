@@ -1,9 +1,7 @@
 import 'package:art_selling_platform/common/icons/TCircularIcon.dart';
-import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TFavoriateIcon extends StatelessWidget {

@@ -1,18 +1,15 @@
 import 'package:art_selling_platform/common/CustomIcons/notificationIcon.dart';
 import 'package:art_selling_platform/common/appbar/appbar.dart';
 import 'package:art_selling_platform/common/appbar/tabBar.dart';
-import 'package:art_selling_platform/common/card_showcase.dart';
-import 'package:art_selling_platform/common/cards/card_vertical.dart';
+
 import 'package:art_selling_platform/common/custom_shapes/Containers/artest_details.dart';
 import 'package:art_selling_platform/features/art/view/store/widgets/category_tab.dart';
-import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/helpers/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:art_selling_platform/common/layout/gridLayout.dart';
 import 'package:art_selling_platform/common/texts/sectionHeader.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
-import 'package:get/get.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});

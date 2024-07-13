@@ -1,5 +1,6 @@
 import 'package:art_selling_platform/features/art/view/home/home.dart';
 import 'package:art_selling_platform/features/art/view/store/store.dart';
+import 'package:art_selling_platform/features/art/view/wishList/wishList.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/helpers/helper.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +30,8 @@ class NavigationMenu extends StatelessWidget {
           destinations: const [
             NavigationDestination(icon: Icon(Iconsax.home), label: "الرئيسية"),
             NavigationDestination(icon: Icon(Iconsax.shop), label: "المتجر"),
-            NavigationDestination(
-                icon: Icon(Iconsax.heart), label: "Wish list"),
-            NavigationDestination(icon: Icon(Iconsax.user), label: "User"),
+            NavigationDestination(icon: Icon(Iconsax.heart), label: "المفضلة"),
+            NavigationDestination(icon: Icon(Iconsax.user), label: "المستخدم"),
           ],
         ),
       ),
@@ -45,7 +45,7 @@ class NavigationController extends GetxController {
   final screens = [
     const HomeScreen(),
     const StoreScreen(),
-    // const Wishlist(),
+    const WishlistScreen(),
     // const SettingsScreen(),
   ];
 }
