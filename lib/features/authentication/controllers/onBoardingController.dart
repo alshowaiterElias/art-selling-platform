@@ -1,5 +1,4 @@
 import 'package:art_selling_platform/features/authentication/views/login/login.dart';
-import 'package:art_selling_platform/features/authentication/views/signup/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
