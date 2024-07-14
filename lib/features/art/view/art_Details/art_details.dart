@@ -4,6 +4,7 @@ import 'package:art_selling_platform/features/art/view/art_Details/widgets/art_d
 import 'package:art_selling_platform/features/art/view/art_Details/widgets/art_meta_data.dart';
 import 'package:art_selling_platform/features/art/view/art_Details/widgets/ratingAndShare.dart';
 import 'package:art_selling_platform/features/art/view/art_reviews/art_reviews.dart';
+import 'package:art_selling_platform/features/art/view/checkout/checkout.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,7 +51,10 @@ class ArtDetailsScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                        onPressed: () {}, child: const Text("اذهب للحساب")),
+                        onPressed: () {
+                          Get.to(() => const CheckOutScreen());
+                        },
+                        child: const Text("اذهب للحساب")),
                   ),
                   //description
                   const SizedBox(height: TSizes.spaceBtwSections),

@@ -1,7 +1,9 @@
 import 'package:art_selling_platform/common/appbar/appbar.dart';
 import 'package:art_selling_platform/features/art/view/cart/widgets/cartItems.dart';
+import 'package:art_selling_platform/features/art/view/checkout/checkout.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -35,7 +37,7 @@ class CartScreen extends StatelessWidget {
         padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: ElevatedButton(
             onPressed: () {
-              // Get.to(() => const CheckOutScreen());
+              Get.to(() => const CheckOutScreen());
             },
             child: Text("حسابك 10000 ريال")),
       ),
