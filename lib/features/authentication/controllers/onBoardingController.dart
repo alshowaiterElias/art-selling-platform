@@ -1,6 +1,7 @@
 import 'package:art_selling_platform/features/authentication/views/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class Onboardingcontroller extends GetxController {
   static Onboardingcontroller get instance => Get.find();
@@ -18,6 +19,8 @@ class Onboardingcontroller extends GetxController {
 
   void nextPage() {
     if (currentPageIndex.value == 2) {
+      final storage = GetStorage();
+      storage.write("FirstTimeOpening", false);
       Get.to(() => const LoginScreen());
     } else {
       pageController.jumpToPage(currentPageIndex.value + 1);
