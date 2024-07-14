@@ -3,6 +3,7 @@ import 'package:art_selling_platform/common/appbar/appbar.dart';
 import 'package:art_selling_platform/common/appbar/tabBar.dart';
 
 import 'package:art_selling_platform/common/custom_shapes/Containers/artest_details.dart';
+import 'package:art_selling_platform/features/art/view/artests/brands.dart';
 import 'package:art_selling_platform/features/art/view/store/widgets/category_tab.dart';
 import 'package:art_selling_platform/utils/helpers/helper.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import 'package:art_selling_platform/common/layout/gridLayout.dart';
 import 'package:art_selling_platform/common/texts/sectionHeader.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
+import 'package:get/get.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -64,7 +66,7 @@ class StoreScreen extends StatelessWidget {
                           TSectionHeader(
                             title: "فنانون",
                             onPressd: () {
-                              // Get.to(() => const BrandsScreen());
+                              Get.to(() => const BrandsScreen());
                             },
                           ),
                           const SizedBox(height: TSizes.spaceBtwItems / 1.5),

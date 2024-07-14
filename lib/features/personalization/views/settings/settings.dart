@@ -2,6 +2,7 @@ import 'package:art_selling_platform/common/appbar/appbar.dart';
 import 'package:art_selling_platform/common/custom_shapes/Containers/primaryHeaderContainer.dart';
 import 'package:art_selling_platform/common/user/settingMenu.dart';
 import 'package:art_selling_platform/common/user/userProfileTile.dart';
+import 'package:art_selling_platform/features/art/view/orders/orders.dart';
 import 'package:art_selling_platform/features/personalization/views/addresses/addresses.dart';
 import 'package:flutter/material.dart';
 
@@ -58,7 +59,7 @@ class SettingsScreen extends StatelessWidget {
                       subTitle: "الطلبات المكتملة و قيد التنفيذ",
                       icon: Iconsax.bag_tick,
                       onTap: () {
-                        // Get.to(() => const OrdersScreen());
+                        Get.to(() => const OrdersScreen());
                       }),
                   TSettingMenuTile(
                       title: "التنبيهات",

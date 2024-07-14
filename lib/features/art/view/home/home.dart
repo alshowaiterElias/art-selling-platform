@@ -2,12 +2,14 @@ import 'package:art_selling_platform/common/cards/card_vertical.dart';
 import 'package:art_selling_platform/common/custom_shapes/Containers/primaryHeaderContainer.dart';
 import 'package:art_selling_platform/common/layout/gridLayout.dart';
 import 'package:art_selling_platform/common/texts/sectionHeader.dart';
+import 'package:art_selling_platform/features/art/view/allProducts/allProducts.dart';
 import 'package:art_selling_platform/features/art/view/home/widgets/homeAppbar.dart';
 import 'package:art_selling_platform/features/art/view/home/widgets/homeHorizantalScrollSection.dart';
 import 'package:art_selling_platform/features/art/view/home/widgets/homeSlider.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -20,7 +22,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             //HEADER
-            TPrimaryHeaderContainer(
+            const TPrimaryHeaderContainer(
               child: Column(
                 children: [
                   //AppBar
@@ -43,10 +45,10 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         // Title
                         TSectionHeader(
-                            title: "الاصناف",
-                            textColor: TColors.white,
-                            showActionButton: false,
-                            onPressd: () {}),
+                          title: "الاصناف",
+                          textColor: TColors.white,
+                          showActionButton: false,
+                        ),
                         const SizedBox(
                           height: TSizes.spaceBtwSections,
                         ),
@@ -72,10 +74,9 @@ class HomeScreen extends StatelessWidget {
                   TSectionHeader(
                     title: "الاكثر شهرة",
                     onPressd: () {
-                      // Get.to(() => AllProductsScreen(
-                      //       title: "Popular Products",
-                      //       futureMethod: controller.fetchAllFeaturedProduct(),
-                      //     ));
+                      Get.to(() => const AllProductsScreen(
+                            title: "Popular Products",
+                          ));
                     },
                   ),
                   const SizedBox(

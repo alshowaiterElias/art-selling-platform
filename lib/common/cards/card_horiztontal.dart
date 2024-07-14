@@ -91,13 +91,13 @@ class TCardHorizontal extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TArtTitleText(
-                        title: " product.title",
+                        title: "الموناليزا",
                         textSizes: TextSizes.small,
                       ),
                       const SizedBox(
                         height: TSizes.spaceBtwItems / 2,
                       ),
-                      TArtTitleWithIcon(title: "product.brand!.name"),
+                      TArtTitleWithIcon(title: "MSA"),
                     ],
                   ),
                   const Spacer(),
@@ -113,7 +113,7 @@ class TCardHorizontal extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(left: TSizes.sm),
                               child: Text(
-                                "controller.getProductPrice(product)",
+                                "10000",
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelMedium!
@@ -124,7 +124,7 @@ class TCardHorizontal extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(left: TSizes.sm),
                               child: TPriceText(
-                                price: "controller.getProductPrice(product)",
+                                price: "8000",
                               ),
                             ),
                           ],

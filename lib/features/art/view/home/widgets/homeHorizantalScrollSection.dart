@@ -1,7 +1,9 @@
 import 'package:art_selling_platform/common/image_text/verticalImageWithText.dart';
+import 'package:art_selling_platform/features/art/view/subCatagory/subCatagories.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class THorizantalListSection extends StatelessWidget {
   const THorizantalListSection({
@@ -38,9 +40,7 @@ class THorizantalListSection extends StatelessWidget {
             text: "فن تشكيلي",
             textColor: TColors.white,
             onTap: () {
-              // Get.to(() => SubCatagoriesScreen(
-              //       catagory: controller.featuredCatagories[index],
-              //     ));
+              Get.to(() => const SubCatagoriesScreen());
             },
           );
         },
