@@ -17,4 +17,7 @@ class TImageStrings {
       "assets/images/authAnimations/emailConfirmed.json";
   static const String passwordLinkSent =
       "assets/images/authAnimations/passwordLinkSent.json";
+
+  static const String docerAnimation =
+      "assets/images/authAnimations/docerAnimation.json";
 }

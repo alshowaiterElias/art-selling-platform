@@ -1,3 +1,4 @@
+import 'package:art_selling_platform/bindings/general_bindings.dart';
 import 'package:art_selling_platform/data/repos/authentication.dart';
 import 'package:art_selling_platform/features/authentication/views/onBoarding/onBoarding.dart';
 import 'package:art_selling_platform/utils/themes/theme.dart';
@@ -30,6 +31,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialBinding: GeneralBindings(),
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,

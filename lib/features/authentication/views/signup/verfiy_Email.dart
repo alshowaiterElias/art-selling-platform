@@ -1,3 +1,4 @@
+import 'package:art_selling_platform/features/authentication/views/login/login.dart';
 import 'package:art_selling_platform/features/authentication/views/signup/widgets/success_Screen.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
@@ -57,7 +58,7 @@ class VerfiyEmailScreen extends StatelessWidget {
                 height: TSizes.spaceBtwItems,
               ),
               Text(
-                  "أرسلنا اليك بريد الكتروني لتاكيد حسابك الرجاء زيارتك بريد الكترونيك و تاكيد الحساب ",
+                  "أرسلنا اليك بريد الكتروني, لتاكيد حسابك الرجاء زيارة بريدك الالكتروني و الضغط على الرابط   ",
                   style: Theme.of(context).textTheme.bodyMedium,
                   textAlign: TextAlign.center),
               const SizedBox(
@@ -73,7 +74,9 @@ class VerfiyEmailScreen extends StatelessWidget {
                           image: TImageStrings.emailConfirmed,
                           title: "تم تاكيد حسابك",
                           subtitle: "يمكنك الان الاستمتاع بخدمات هذا البرنامج",
-                          onPressed: () {}));
+                          onPressed: () {
+                            Get.to(() => const LoginScreen());
+                          }));
                     },
                     child: const Text("المواصلة")),
               ),
