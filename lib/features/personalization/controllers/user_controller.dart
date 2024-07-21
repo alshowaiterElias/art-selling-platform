@@ -11,6 +11,7 @@ import 'package:art_selling_platform/utils/popups/fullScreenLoader.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UserController extends GetxController {
   static UserController get instance => Get.find();
@@ -111,9 +112,6 @@ class UserController extends GetxController {
           await auth.signInWithGoogle();
           await auth.deleteAccount();
           await AuthenticationRepo.instance.logout();
-
-          FullScreenLoader.stopLoading();
-          Get.offAll(() => const LoginScreen());
         } else if (provider == "password") {
           FullScreenLoader.stopLoading();
           Get.to(() => const ReAuthenticateUser());
@@ -154,34 +152,34 @@ class UserController extends GetxController {
     }
   }
 
-  // uploadProfilePicture() async {
-  //   try {
-  //     final image = await ImagePicker().pickImage(
-  //         source: ImageSource.gallery,
-  //         imageQuality: 70,
-  //         maxHeight: 512,
-  //         maxWidth: 512);
-  //     if (image != null) {
-  //       imageLoading.value = true;
-  //       //upload image
-  //       final imageUrl =
-  //           await UserRepo.instance.uploadImage("User/Images/Profile/", image);
+  uploadProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(
+          source: ImageSource.gallery,
+          imageQuality: 70,
+          maxHeight: 512,
+          maxWidth: 512);
+      if (image != null) {
+        imageLoading.value = true;
+        //upload image
+        final imageUrl =
+            await UserRepo.instance.uploadImage("Users/Images/Profile/", image);
 
-  //       //update user image
-  //       Map<String, dynamic> json = {"ProfilePicture": imageUrl};
-  //       await UserRepo.instance.updateUserField(json);
+        //update user image
+        Map<String, dynamic> json = {"ProfilePicture": imageUrl};
+        await UserRepo.instance.updateUserField(json);
 
-  //       //update frontend
-  //       user.value.profilePicture = imageUrl;
-  //       user.refresh();
-  //       //snackbar
-  //       TLoaders.successSnackBar(
-  //           title: "Congrtas", message: "Your Profile Picture has changed");
-  //     }
-  //   } catch (e) {
-  //     TLoaders.errorSnackBar(title: "Oh Snap", message: "Something went wrong");
-  //   } finally {
-  //     imageLoading.value = false;
-  //   }
-  // }
+        //update frontend
+        user.value.profilePicture = imageUrl;
+        user.refresh();
+        //snackbar
+        TLoaders.successSnackBar(
+            title: "مبروك", message: "تم تعديل صورتك الشخصية");
+      }
+    } catch (e) {
+      TLoaders.errorSnackBar(title: "يا ساتر", message: e.toString());
+    } finally {
+      imageLoading.value = false;
+    }
+  }
 }

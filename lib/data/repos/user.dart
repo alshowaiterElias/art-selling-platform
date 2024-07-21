@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:art_selling_platform/data/repos/authentication.dart';
 import 'package:art_selling_platform/features/authentication/models/userModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UserRepo extends GetxController {
   static UserRepo get instance => Get.find();
@@ -70,14 +74,14 @@ class UserRepo extends GetxController {
 
   //Upload Image
 
-  // Future<String> uploadImage(String path, XFile image) async {
-  //   try {
-  //     final ref = FirebaseStorage.instance.ref(path).child(image.name);
-  //     await ref.putFile(File(image.path));
-  //     final url = await ref.getDownloadURL();
-  //     return url;
-  //   } catch (e) {
-  //     throw 'Something went wrong';
-  //   }
-  // }
+  Future<String> uploadImage(String path, XFile image) async {
+    try {
+      final ref = FirebaseStorage.instance.ref(path).child(image.name);
+      await ref.putFile(File(image.path));
+      final url = await ref.getDownloadURL();
+      return url;
+    } catch (e) {
+      throw 'خطا في رفع الصورة';
+    }
+  }
 }

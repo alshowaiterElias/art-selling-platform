@@ -7,7 +7,7 @@ class TProfileMenuItem extends StatelessWidget {
     super.key,
     required this.title,
     required this.value,
-    this.icon = Iconsax.arrow_right_34,
+    this.icon = Iconsax.arrow_left,
     required this.onPressed,
   });
   final String title, value;
@@ -23,22 +23,24 @@ class TProfileMenuItem extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              flex: 3,
-              child: Text(title,
-                  style: Theme.of(context).textTheme.bodySmall,
-                  overflow: TextOverflow.ellipsis),
-            ),
+                flex: 3,
+                child: Icon(
+                  icon,
+                  size: 18,
+                )),
             Expanded(
-              flex: 5,
+              flex: 10,
               child: Text(value,
                   style: Theme.of(context).textTheme.bodyLarge,
                   overflow: TextOverflow.ellipsis),
             ),
             Expanded(
-                child: Icon(
-              icon,
-              size: 18,
-            ))
+              flex: 6,
+              child: Text(title,
+                  textDirection: TextDirection.rtl,
+                  style: Theme.of(context).textTheme.bodySmall,
+                  overflow: TextOverflow.ellipsis),
+            ),
           ],
         ),
       ),

@@ -38,17 +38,21 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    // final networkImage = controller.user.value.profilePicture;
-                    // final image = TImageStrings.lightLogo;
-                    const TCircularImage(
-                      image: TImageStrings.lightLogo,
-                      width: 80,
-                      height: 80,
-                      isNetworkImage: false,
-                    ),
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty
+                          ? networkImage
+                          : TImageStrings.lightLogo;
+                      return TCircularImage(
+                        image: image,
+                        width: 80,
+                        height: 80,
+                        isNetworkImage: true,
+                      );
+                    }),
                     TextButton(
                         onPressed: () {
-                          // controller.uploadProfilePicture();
+                          controller.uploadProfilePicture();
                         },
                         child: const Text("تغيير الصورة")),
                   ],
