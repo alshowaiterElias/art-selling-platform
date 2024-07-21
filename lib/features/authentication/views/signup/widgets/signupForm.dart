@@ -1,5 +1,4 @@
 import 'package:art_selling_platform/features/authentication/controllers/signupController.dart';
-import 'package:art_selling_platform/features/authentication/views/signup/verfiy_Email.dart';
 import 'package:art_selling_platform/utils/validators/validiator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

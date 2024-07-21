@@ -1,5 +1,5 @@
-import 'package:art_selling_platform/features/authentication/views/login/login.dart';
-import 'package:art_selling_platform/features/authentication/views/signup/widgets/success_Screen.dart';
+import 'package:art_selling_platform/data/repos/authentication.dart';
+import 'package:art_selling_platform/features/authentication/controllers/verfiy_email_controller.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:art_selling_platform/utils/helpers/helper.dart';
@@ -15,14 +15,14 @@ class VerfiyEmailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final VerfiyEmailController controller = Get.put(VerfiyEmailController());
+    final VerfiyEmailController controller = Get.put(VerfiyEmailController());
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
               onPressed: () {
-                // AuthenticationRepo.instance.logout();
+                AuthenticationRepo.instance.logout();
               },
               icon: const Icon(CupertinoIcons.clear))
         ],
@@ -69,14 +69,7 @@ class VerfiyEmailScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                     onPressed: () {
-                      // controller.checkEmailVerificationStatus();
-                      Get.to(() => Successscreen(
-                          image: TImageStrings.emailConfirmed,
-                          title: "تم تاكيد حسابك",
-                          subtitle: "يمكنك الان الاستمتاع بخدمات هذا البرنامج",
-                          onPressed: () {
-                            Get.to(() => const LoginScreen());
-                          }));
+                      controller.checkEmailVerificationStatus();
                     },
                     child: const Text("المواصلة")),
               ),
@@ -87,7 +80,7 @@ class VerfiyEmailScreen extends StatelessWidget {
                 width: double.infinity,
                 child: TextButton(
                     onPressed: () {
-                      // controller.sendEmailVerification();
+                      controller.sendEmailVerification();
                     },
                     child: const Text("إعادة ارسال البريد الالكتروني")),
               ),

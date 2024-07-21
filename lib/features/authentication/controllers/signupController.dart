@@ -29,8 +29,7 @@ class SignupController extends GetxController {
     try {
       //start Loading
       FullScreenLoader.openLoadingDialog(
-          "We are processing your information ...",
-          TImageStrings.docerAnimation);
+          "... نحن نعالج طلبك الان", TImageStrings.docerAnimation);
       //check internet connectivity
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
@@ -49,9 +48,9 @@ class SignupController extends GetxController {
       //privacy policy
       if (tickCheckBox.value == false) {
         TLoaders.warningSnackBar(
-            title: "Accept Privacy Policy",
+            title: "الموافقة على سياسات الخصوصية",
             message:
-                "In order to create the account,you must have read and accept the privacy policy and terms of use");
+                "لتكمل تسجيل حسابك عليك تأكيد الموافقة على سياسات الخصوصية و شروط الاستخدام");
         return;
       }
 
@@ -81,8 +80,8 @@ class SignupController extends GetxController {
       //show success message
 
       TLoaders.successSnackBar(
-          title: "Congrats",
-          message: "Your Account has been created! Verfiy Email to continue");
+          title: "أحسنت",
+          message: "انت الان على بعد خطوة واحدة من تاكيد حسابك");
       //move to verify email
       Get.to(() => VerfiyEmailScreen(
             email: email.text.trim(),

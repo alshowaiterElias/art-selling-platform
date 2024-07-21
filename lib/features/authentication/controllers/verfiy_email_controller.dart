@@ -4,6 +4,7 @@ import 'package:art_selling_platform/data/repos/authentication.dart';
 import 'package:art_selling_platform/features/authentication/views/signup/widgets/success_Screen.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/loaders/loaders.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class VerfiyEmailController extends GetxController {
@@ -12,7 +13,6 @@ class VerfiyEmailController extends GetxController {
   //send email whenever verfiy screen appears & set timer to auto redirect
   @override
   void onInit() {
-    // TODO: implement onInit
     sendEmailVerification();
     setTimerToAutoRedirect();
     super.onInit();
@@ -21,9 +21,10 @@ class VerfiyEmailController extends GetxController {
   //send email verfication link
   sendEmailVerification() async {
     try {
-      // await AuthenticationRepo.instance.sendEmailVerfication();
+      await AuthenticationRepo.instance.sendEmailVerfication();
       TLoaders.successSnackBar(
-          title: "Email Sent", message: "Please check your email inbox");
+          title: "تم ارسال الايميل",
+          message: "الرجاء الذهاب لتاكيد حسابك عن طريق الرابط المرسل اليكم");
     } catch (e) {
       TLoaders.errorSnackBar(title: "Oh Snap!", message: e.toString());
     }
@@ -32,34 +33,34 @@ class VerfiyEmailController extends GetxController {
   //timer to auto redirct
   setTimerToAutoRedirect() {
     Timer.periodic(const Duration(seconds: 1), (timer) async {
-      // await FirebaseAuth.instance.currentUser?.reload();
-      // final user = FirebaseAuth.instance.currentUser;
+      await FirebaseAuth.instance.currentUser?.reload();
+      final user = FirebaseAuth.instance.currentUser;
 
-      // if (user?.emailVerified ?? false) {
-      //   timer.cancel();
-      //   Get.off(() => Successscreen(
-      //       image: TImageStrings.emailConfirmed,
-      //       title: "TTextStrings.accountCreatedTitle",
-      //       subtitle: "TTextStrings.accountCreatedSubTitle",
-      //       onPressed: () {
-      //         AuthenticationRepo.instance.screenRedirect();
-      //       }));
-      // }
+      if (user?.emailVerified ?? false) {
+        timer.cancel();
+        Get.off(() => Successscreen(
+            image: TImageStrings.emailConfirmed,
+            title: "تم انشاء حسابك",
+            subtitle: "يمكنك الان الاستمتاع بخدمات هذا البرنامج",
+            onPressed: () {
+              AuthenticationRepo.instance.screenRedirect();
+            }));
+      }
     });
   }
 
   //manually check if email is verfied
   checkEmailVerificationStatus() async {
-    // final currentUser = FirebaseAuth.instance.currentUser;
+    final currentUser = FirebaseAuth.instance.currentUser;
 
-    // if (currentUser != null && currentUser.emailVerified) {
-    //   Get.off(() => Successscreen1(
-    //       image: TImageStrings.slider1,
-    //       title: TTextStrings.accountCreatedTitle,
-    //       subtitle: TTextStrings.accountCreatedSubTitle,
-    //       onPressed: () {
-    //         AuthenticationRepo.instance.screenRedirect();
-    //       }));
-    // }
+    if (currentUser != null && currentUser.emailVerified) {
+      Get.off(() => Successscreen(
+          image: TImageStrings.emailConfirmed,
+          title: "تم انشاء حسابك",
+          subtitle: "يمكنك الان الاستمتاع بخدمات هذا البرنامج",
+          onPressed: () {
+            AuthenticationRepo.instance.screenRedirect();
+          }));
+    }
   }
 }
