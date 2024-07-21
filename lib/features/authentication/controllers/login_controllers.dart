@@ -29,7 +29,7 @@ class LoginController extends GetxController {
     try {
       //start Loading
       FullScreenLoader.openLoadingDialog(
-          "Logging you in ...", TImageStrings.docerAnimation);
+          "... جاري تسجيل دخولك", TImageStrings.docerAnimation);
 
       //Check intrnet conictivity
 
@@ -53,8 +53,8 @@ class LoginController extends GetxController {
       }
 
       //Login user with Email and Password authentecate
-      // await AuthenticationRepo.instance
-      //     .loginWithEmailAndPassword(email.text.trim(), password.text.trim());
+      await AuthenticationRepo.instance
+          .loginWithEmailAndPassword(email.text.trim(), password.text.trim());
 
       //Remove Loader
       FullScreenLoader.stopLoading();
@@ -63,8 +63,7 @@ class LoginController extends GetxController {
       AuthenticationRepo.instance.screenRedirect();
     } catch (e) {
       FullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(
-          title: "OnSnap", message: "Something went wrong please try again");
+      TLoaders.errorSnackBar(title: "يا ساتر", message: e.toString());
     }
   }
 

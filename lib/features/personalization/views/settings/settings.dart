@@ -2,6 +2,7 @@ import 'package:art_selling_platform/common/appbar/appbar.dart';
 import 'package:art_selling_platform/common/custom_shapes/Containers/primaryHeaderContainer.dart';
 import 'package:art_selling_platform/common/user/settingMenu.dart';
 import 'package:art_selling_platform/common/user/userProfileTile.dart';
+import 'package:art_selling_platform/data/repos/authentication.dart';
 import 'package:art_selling_platform/features/art/view/orders/orders.dart';
 import 'package:art_selling_platform/features/personalization/views/addresses/addresses.dart';
 import 'package:flutter/material.dart';
@@ -99,7 +100,7 @@ class SettingsScreen extends StatelessWidget {
                     width: double.infinity,
                     child: OutlinedButton(
                         onPressed: () {
-                          // AuthenticationRepo.instance.logout();
+                          AuthenticationRepo.instance.logout();
                         },
                         child: const Text("تسجيل الخروج")),
                   ),

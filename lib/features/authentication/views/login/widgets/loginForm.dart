@@ -1,6 +1,6 @@
+import 'package:art_selling_platform/features/authentication/controllers/login_controllers.dart';
 import 'package:art_selling_platform/features/authentication/views/password_config/forgetPassword.dart';
 import 'package:art_selling_platform/features/authentication/views/signup/signup.dart';
-import 'package:art_selling_platform/nav.dart';
 import 'package:art_selling_platform/utils/validators/validiator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,16 +15,16 @@ class SignInForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final LoginController controller = Get.put(LoginController());
+    final LoginController controller = Get.put(LoginController());
     return Form(
-      // key: controller.loginFormKey,
+      key: controller.loginFormKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: TSizes.spaceBtwSections),
         child: Column(
           children: [
             TextFormField(
                 validator: (value) => TValidiator.validiateEmail(value),
-                // controller: controller.email,
+                controller: controller.email,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Iconsax.direct_right),
                   labelText: "البريد الالكتروني",
@@ -32,21 +32,24 @@ class SignInForm extends StatelessWidget {
             const SizedBox(
               height: TSizes.spaceBtwInputFields,
             ),
-            TextFormField(
-
-                // obscureText: controller.hidePassword.value,
-                validator: (value) =>
-                    TValidiator.validateEmptyText("كلمة المرور", value),
-                // controller: controller.password,
-                decoration: InputDecoration(
-                    prefixIcon: const Icon(Iconsax.password_check),
-                    labelText: "كلمة المرور",
-                    suffixIcon: IconButton(
-                        onPressed: () {
-                          // controller.hidePassword.value =
-                          //     !controller.hidePassword.value;
-                        },
-                        icon: Icon(Iconsax.eye)))),
+            Obx(
+              () => TextFormField(
+                  obscureText: controller.hidePassword.value,
+                  validator: (value) =>
+                      TValidiator.validateEmptyText("كلمة المرور", value),
+                  controller: controller.password,
+                  decoration: InputDecoration(
+                      prefixIcon: const Icon(Iconsax.password_check),
+                      labelText: "كلمة المرور",
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            controller.hidePassword.value =
+                                !controller.hidePassword.value;
+                          },
+                          icon: Icon(controller.hidePassword.value
+                              ? Iconsax.eye_slash
+                              : Iconsax.eye)))),
+            ),
 
             const SizedBox(
               height: TSizes.spaceBtwInputFields / 2,
@@ -58,12 +61,15 @@ class SignInForm extends StatelessWidget {
                 //remember me
                 Row(
                   children: [
-                    Checkbox(
-                        value: true, //controller.rememberMe.value,
-                        onChanged: (value) {
-                          // controller.rememberMe.value =
-                          //     !controller.rememberMe.value;
-                        }),
+                    Obx(
+                      () => Checkbox(
+                          value: controller
+                              .rememberMe.value, //controller.rememberMe.value,
+                          onChanged: (value) {
+                            controller.rememberMe.value =
+                                !controller.rememberMe.value;
+                          }),
+                    ),
                     const Text("تذكرني"),
                   ],
                 ),
@@ -84,8 +90,7 @@ class SignInForm extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                   onPressed: () {
-                    // controller.emailAndPasswordSignIn();
-                    Get.to(() => const NavigationMenu());
+                    controller.emailAndPasswordSignIn();
                   },
                   child: const Text("تسجيل الدخول")),
             ),

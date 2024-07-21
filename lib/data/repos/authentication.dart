@@ -54,6 +54,16 @@ class AuthenticationRepo extends GetxController {
     }
   }
 
+  Future<UserCredential> loginWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      return await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+    } catch (e) {
+      throw "خطا في تسجيل الدخول";
+    }
+  }
+
   Future<void> sendEmailVerfication() async {
     try {
       await _auth.currentUser?.sendEmailVerification();
@@ -65,6 +75,7 @@ class AuthenticationRepo extends GetxController {
   Future<void> logout() async {
     try {
       await _auth.signOut();
+      screenRedirect();
     } catch (e) {
       throw 'خطا في تسجيل الخروج';
     }
