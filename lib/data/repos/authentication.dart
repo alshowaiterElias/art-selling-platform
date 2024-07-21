@@ -1,3 +1,4 @@
+import 'package:art_selling_platform/data/repos/user.dart';
 import 'package:art_selling_platform/features/authentication/views/login/login.dart';
 import 'package:art_selling_platform/features/authentication/views/onBoarding/onBoarding.dart';
 import 'package:art_selling_platform/features/authentication/views/signup/verfiy_Email.dart';
@@ -6,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthenticationRepo extends GetxController {
   static AuthenticationRepo get instance => Get.find();
@@ -13,7 +15,7 @@ class AuthenticationRepo extends GetxController {
   //variables
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
-
+  User? get authUser => _auth.currentUser;
   @override
   void onReady() {
     FlutterNativeSplash.remove();
@@ -72,10 +74,54 @@ class AuthenticationRepo extends GetxController {
     }
   }
 
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } catch (e) {
+      throw ' خطا في إرسال البريد الالكتروني لاعادة ضبط كلمة المرور';
+    }
+  }
+
+  Future<UserCredential> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication? googleAuth =
+          await userAccount?.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+
+      return await _auth.signInWithCredential(credential);
+    } catch (e) {
+      throw "حصل خطا في التسجيل عبر جوجل";
+    }
+  }
+
+  Future<void> reAuthenticateWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: password);
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } catch (e) {
+      throw "خطا في تاكيد حذفك للحساب";
+    }
+  }
+
+  Future<void> deleteAccount() async {
+    try {
+      await UserRepo.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser!.delete();
+    } catch (e) {
+      throw "خطا في حذف الحساب";
+    }
+  }
+
   Future<void> logout() async {
     try {
+      await GoogleSignIn().signOut();
       await _auth.signOut();
-      screenRedirect();
+      Get.offAll(() => const LoginScreen());
     } catch (e) {
       throw 'خطا في تسجيل الخروج';
     }

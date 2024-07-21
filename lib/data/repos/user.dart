@@ -1,3 +1,4 @@
+import 'package:art_selling_platform/data/repos/authentication.dart';
 import 'package:art_selling_platform/features/authentication/models/userModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
@@ -18,52 +19,52 @@ class UserRepo extends GetxController {
   }
 
   //Fetch user details based on id
-  // Future<UserModel> fetchUserDetails() async {
-  //   try {
-  //     final documentSnapshot = await _db
-  //         .collection("Users")
-  //         .doc(AuthenticationRepo.instance.authUser?.uid)
-  //         .get();
-  //     if (documentSnapshot.exists) {
-  //       return UserModel.fromSnapShot(documentSnapshot);
-  //     } else {
-  //       return UserModel.empty();
-  //     }
-  //   } catch (e) {
-  //     throw 'Something Went Wrong,Please try again';
-  //   }
-  // }
+  Future<UserModel> fetchUserDetails() async {
+    try {
+      final documentSnapshot = await _db
+          .collection("Users")
+          .doc(AuthenticationRepo.instance.authUser?.uid)
+          .get();
+      if (documentSnapshot.exists) {
+        return UserModel.fromSnapShot(documentSnapshot);
+      } else {
+        return UserModel.empty();
+      }
+    } catch (e) {
+      throw 'خطا في تنزيل البيانات';
+    }
+  }
 
-  //update user
-  // Future<void> updateUserDetails(UserModel updatedUser) async {
-  //   try {
-  //     await _db
-  //         .collection("Users")
-  //         .doc(AuthenticationRepo.instance.authUser?.uid)
-  //         .update(updatedUser.toJson());
-  //   } catch (e) {
-  //     throw 'Something Went Wrong,Please try again';
-  //   }
-  // }
+  // update user
+  Future<void> updateUserDetails(UserModel updatedUser) async {
+    try {
+      await _db
+          .collection("Users")
+          .doc(AuthenticationRepo.instance.authUser?.uid)
+          .update(updatedUser.toJson());
+    } catch (e) {
+      throw 'خطا في تعديل البيانات';
+    }
+  }
 
   //update a field
-  // Future<void> updateUserField(Map<String, dynamic> json) async {
-  //   try {
-  //     await _db
-  //         .collection("Users")
-  //         .doc(AuthenticationRepo.instance.authUser?.uid)
-  //         .update(json);
-  //   } catch (e) {
-  //     throw 'Something Went Wrong,Please try again';
-  //   }
-  // }
+  Future<void> updateUserField(Map<String, dynamic> json) async {
+    try {
+      await _db
+          .collection("Users")
+          .doc(AuthenticationRepo.instance.authUser?.uid)
+          .update(json);
+    } catch (e) {
+      throw 'خطا في تعديل البيانات';
+    }
+  }
 
   //remove user from FS
   Future<void> removeUserRecord(String userID) async {
     try {
       await _db.collection("Users").doc(userID).delete();
     } catch (e) {
-      throw 'Something Went Wrong,Please try again';
+      throw 'خطا في حذف المستخدم';
     }
   }
 

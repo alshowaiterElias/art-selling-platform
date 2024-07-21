@@ -18,7 +18,7 @@ class ForgotPasswordController extends GetxController {
   Future sendPasswordResetEmail() async {
     try {
       FullScreenLoader.openLoadingDialog(
-          "Processing your request ....", TImageStrings.docerAnimation);
+          "... جاري معالجة طلبك", TImageStrings.docerAnimation);
 
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
@@ -33,29 +33,30 @@ class ForgotPasswordController extends GetxController {
       }
 
       //send email
-      // await AuthenticationRepo.instance.forgotPasswrod(email.text.trim());
+      await AuthenticationRepo.instance
+          .sendPasswordResetEmail(email.text.trim());
 
       //remove loader
       FullScreenLoader.stopLoading();
 
       //Message
       TLoaders.successSnackBar(
-          title: "Email Sent",
-          message: "Email Link is sent to reset your password".tr);
+          title: "تم الارسال",
+          message: "قم بزيارة بريدك الالكتروني لاعادة ضبط كلمة المرور".tr);
 
       //redirect
       Get.to(() => ResetpasswordScreen(
             email: email.text.trim(),
           ));
     } catch (e) {
-      throw e.toString();
+      TLoaders.errorSnackBar(title: "خطأ", message: e.toString());
     }
   }
 
   Future resendPasswordResetEmail(String email) async {
     try {
       FullScreenLoader.openLoadingDialog(
-          "Processing your request ....", TImageStrings.docerAnimation);
+          "... جاري معالجة طلبك", TImageStrings.docerAnimation);
 
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
@@ -64,17 +65,17 @@ class ForgotPasswordController extends GetxController {
       }
 
       //send email
-      // await AuthenticationRepo.instance.forgotPasswrod(email);
+      await AuthenticationRepo.instance.sendPasswordResetEmail(email);
 
       //remove loader
       FullScreenLoader.stopLoading();
 
       //Message
       TLoaders.successSnackBar(
-          title: "Email Sent",
-          message: "Email Link is sent to reset your password".tr);
+          title: "تم الارسال",
+          message: "قم بزيارة بريدك الالكتروني لاعادة ضبط كلمة المرور".tr);
     } catch (e) {
-      throw e.toString();
+      TLoaders.errorSnackBar(title: "خطأ", message: e.toString());
     }
   }
 }

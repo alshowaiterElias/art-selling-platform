@@ -1,3 +1,4 @@
+import 'package:art_selling_platform/features/authentication/controllers/forgot_password.dart';
 import 'package:art_selling_platform/features/authentication/views/password_config/resetPassword.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:art_selling_platform/utils/validators/validiator.dart';
@@ -11,7 +12,7 @@ class ForgetpasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.put(ForgotPasswordController());
+    final controller = Get.put(ForgotPasswordController());
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -35,9 +36,9 @@ class ForgetpasswordScreen extends StatelessWidget {
             ),
             //Text
             Form(
-              // key: controller.forgotPasswordFormKey,
+              key: controller.forgotPasswordFormKey,
               child: TextFormField(
-                // controller: controller.email,
+                controller: controller.email,
                 validator: (value) => TValidiator.validiateEmail(value),
                 decoration: const InputDecoration(
                     labelText: "البريد الالكتروني",
@@ -52,9 +53,9 @@ class ForgetpasswordScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                     onPressed: () {
-                      // controller.sendPasswordResetEmail();
-                      Get.to(() => const ResetpasswordScreen(
-                          email: "alshowaiterelias@gmail.com"));
+                      controller.sendPasswordResetEmail();
+                      Get.to(() => ResetpasswordScreen(
+                          email: controller.email.text.trim()));
                     },
                     child: const Text("إرسال الطلب"))),
           ],

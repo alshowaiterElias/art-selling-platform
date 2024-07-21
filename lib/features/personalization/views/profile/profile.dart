@@ -1,6 +1,7 @@
 import 'package:art_selling_platform/common/appbar/appbar.dart';
 import 'package:art_selling_platform/common/images/circularImages.dart';
 import 'package:art_selling_platform/common/texts/sectionHeader.dart';
+import 'package:art_selling_platform/features/personalization/controllers/user_controller.dart';
 import 'package:art_selling_platform/features/personalization/views/profile/widgets/change_name.dart';
 import 'package:art_selling_platform/features/personalization/views/profile/widgets/profileMenu.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
@@ -16,7 +17,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final controller = UserController.instance;
+    final controller = UserController.instance;
     return Scaffold(
       appBar: TAppbar(
         showBackArrow: true,
@@ -61,14 +62,14 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwItems),
               TProfileMenuItem(
                 title: "الاسم",
-                value: "Elias Alshowaiter",
+                value: controller.user.value.fullName,
                 onPressed: () {
                   Get.to(() => const ChangeNameScreen());
                 },
               ),
               TProfileMenuItem(
                 title: "إسم المستخدم",
-                value: "Elias alshowaiter",
+                value: controller.user.value.username,
                 onPressed: () {},
               ),
               const SizedBox(height: TSizes.spaceBtwItems),
@@ -81,18 +82,18 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwItems),
               TProfileMenuItem(
                 title: "ID",
-                value: "12jd2",
+                value: controller.user.value.id,
                 icon: Iconsax.copy,
                 onPressed: () {},
               ),
               TProfileMenuItem(
                 title: "البريد الالكتروني",
-                value: "alshowaiterelias@gmail.com",
+                value: controller.user.value.email,
                 onPressed: () {},
               ),
               TProfileMenuItem(
                 title: "رقم الهاتف",
-                value: "772546343",
+                value: controller.user.value.phoneNumber,
                 onPressed: () {},
               ),
               const Divider(),
@@ -104,7 +105,7 @@ class ProfileScreen extends StatelessWidget {
                     style: TextStyle(color: Colors.red),
                   ),
                   onPressed: () {
-                    // controller.deleteUserWarningPopUp();
+                    controller.deleteUserWarningPopUp();
                   },
                 ),
               )

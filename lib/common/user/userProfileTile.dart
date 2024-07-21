@@ -1,4 +1,5 @@
 import 'package:art_selling_platform/common/images/circularImages.dart';
+import 'package:art_selling_platform/features/personalization/controllers/user_controller.dart';
 import 'package:art_selling_platform/features/personalization/views/profile/profile.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
@@ -14,7 +15,7 @@ class TUserProfileTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final controller = UserController.instance;
+    final controller = UserController.instance;
     return ListTile(
       leading: const TCircularImage(
         image: TImageStrings.lightLogo,
@@ -23,14 +24,14 @@ class TUserProfileTile extends StatelessWidget {
         padding: 0,
       ),
       title: Text(
-        "Elias Alshowaiter",
+        controller.user.value.fullName,
         style: Theme.of(context)
             .textTheme
             .headlineSmall!
             .apply(color: TColors.white),
       ),
       subtitle: Text(
-        "Alshowaiterelias@gmail.com",
+        controller.user.value.email,
         style:
             Theme.of(context).textTheme.bodyMedium!.apply(color: TColors.white),
       ),

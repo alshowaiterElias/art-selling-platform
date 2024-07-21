@@ -1,4 +1,6 @@
+import 'package:art_selling_platform/features/authentication/controllers/login_controllers.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/image_strings.dart';
@@ -11,7 +13,7 @@ class SocialMedia extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final LoginController controller = Get.put(LoginController());
+    final LoginController controller = Get.put(LoginController());
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -22,7 +24,7 @@ class SocialMedia extends StatelessWidget {
           ),
           child: IconButton(
             onPressed: () {
-              // controller.googleSingIn();
+              controller.googleSingIn();
             },
             icon: const Image(
               width: TSizes.iconsMd,

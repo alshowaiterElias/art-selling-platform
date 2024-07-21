@@ -1,3 +1,4 @@
+import 'package:art_selling_platform/features/authentication/controllers/forgot_password.dart';
 import 'package:art_selling_platform/features/authentication/views/login/login.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
@@ -78,8 +79,8 @@ class ResetpasswordScreen extends StatelessWidget {
                 width: double.infinity,
                 child: TextButton(
                     onPressed: () {
-                      // ForgotPasswordController.instance
-                      //     .resendPasswordResetEmail(email);
+                      ForgotPasswordController.instance
+                          .resendPasswordResetEmail(email);
                     },
                     child: const Text("إعادة ارسال البريد الالكتروني")),
               ),

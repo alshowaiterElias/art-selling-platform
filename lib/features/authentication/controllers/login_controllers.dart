@@ -1,4 +1,5 @@
 import 'package:art_selling_platform/data/repos/authentication.dart';
+import 'package:art_selling_platform/features/personalization/controllers/user_controller.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/loaders/loaders.dart';
 import 'package:art_selling_platform/utils/network/networkManager.dart';
@@ -16,7 +17,7 @@ class LoginController extends GetxController {
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
-  // final userController = Get.put(UserController());
+  final userController = Get.put(UserController());
 
   @override
   void onInit() {
@@ -68,34 +69,33 @@ class LoginController extends GetxController {
   }
 
   Future<void> googleSingIn() async {
-    // try {
-    // start loading
-    FullScreenLoader.openLoadingDialog(
-        "Logging you in ...", TImageStrings.docerAnimation);
+    try {
+      // start loading
+      FullScreenLoader.openLoadingDialog(
+          "... جاري تسجيل دخولك", TImageStrings.docerAnimation);
 
-    //check internet connictivity
-    final isConnected = await NetworkManager.instance.isConnected();
-    if (!isConnected) {
+      //check internet connictivity
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        FullScreenLoader.stopLoading();
+        return;
+      }
+
+      //Google Authenticate
+      final userCredential =
+          await AuthenticationRepo.instance.signInWithGoogle();
+
+      // save user data
+      await userController.saveUserRecored(userCredential);
+
+      //stop loading
       FullScreenLoader.stopLoading();
-      return;
+
+      //Redirect
+      AuthenticationRepo.instance.screenRedirect();
+    } catch (e) {
+      FullScreenLoader.stopLoading();
+      TLoaders.errorSnackBar(title: "يا ساتر", message: e.toString());
     }
-
-    //Google Authenticate
-    // final userCredential = await AuthenticationRepo.instance.signInWithGoolge();
-
-    //save user data
-    // userController.saveUserRecored(userCredential);
-
-    //stop loading
-    FullScreenLoader.stopLoading();
-
-    //Redirect
-    AuthenticationRepo.instance.screenRedirect();
-    // }
-    // catch (e) {
-    //   FullScreenLoader.stopLoading();
-    //   TLoaders.errorSnackBar(
-    //       title: "OnSnap", message: "Something went wrong please try again");
-    // }
   }
 }
