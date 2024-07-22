@@ -20,4 +20,17 @@ class TImageStrings {
 
   static const String docerAnimation =
       "assets/images/authAnimations/docerAnimation.json";
+
+  static const String coalPaintingsIcon =
+      "assets/images/category/coalPaintings.png";
+  static const String oilPaintingIcon =
+      "assets/images/category/oilPainting.png";
+  static const String pencilPaintingsIcon =
+      "assets/images/category/pencilPaintings.png";
+  static const String waterPaintingsIcon =
+      "assets/images/category/waterPaintings.png";
+  static const String portraitPaintingsIcon =
+      "assets/images/category/portraitPaintings.png";
+  static const String caricaturePaintingsIcon =
+      "assets/images/category/caricaturePaintings.png";
 }

@@ -5,6 +5,7 @@ import 'package:art_selling_platform/common/user/userProfileTile.dart';
 import 'package:art_selling_platform/data/repos/authentication.dart';
 import 'package:art_selling_platform/features/art/view/orders/orders.dart';
 import 'package:art_selling_platform/features/personalization/views/addresses/addresses.dart';
+import 'package:art_selling_platform/features/personalization/views/settings/upload.dart';
 import 'package:flutter/material.dart';
 
 import 'package:art_selling_platform/common/texts/sectionHeader.dart';
@@ -83,7 +84,7 @@ class SettingsScreen extends StatelessWidget {
                     subTitle: " رفع بيانات خاصة بي الى البرنامج",
                     icon: Iconsax.document_upload,
                     onTap: () {
-                      // Get.to(() => const UploadScreen());
+                      Get.to(() => const UploadScreen());
                     },
                   ),
                   TSettingMenuTile(

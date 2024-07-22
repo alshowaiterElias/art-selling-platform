@@ -18,7 +18,6 @@ Future<void> main() async {
   //todo: localStorage
   await GetStorage.init();
   //todo: firebase
-
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ).then((FirebaseApp value) => Get.put(AuthenticationRepo()));

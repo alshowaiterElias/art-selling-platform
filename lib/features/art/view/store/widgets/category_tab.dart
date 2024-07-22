@@ -2,14 +2,15 @@ import 'package:art_selling_platform/common/card_showcase.dart';
 import 'package:art_selling_platform/common/cards/card_vertical.dart';
 import 'package:art_selling_platform/common/layout/gridLayout.dart';
 import 'package:art_selling_platform/common/texts/sectionHeader.dart';
+import 'package:art_selling_platform/features/art/models/catagory_model.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class TCatTap extends StatelessWidget {
-  const TCatTap({
-    super.key,
-  });
+  const TCatTap({super.key, required this.category});
+
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context) {

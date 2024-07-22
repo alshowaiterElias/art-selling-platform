@@ -1,5 +1,6 @@
 import 'package:art_selling_platform/common/appbar/appbar.dart';
 import 'package:art_selling_platform/common/images/circularImages.dart';
+import 'package:art_selling_platform/common/shimmer/shimmer_effect.dart';
 import 'package:art_selling_platform/common/texts/sectionHeader.dart';
 import 'package:art_selling_platform/features/personalization/controllers/user_controller.dart';
 import 'package:art_selling_platform/features/personalization/views/profile/widgets/change_name.dart';
@@ -43,12 +44,18 @@ class ProfileScreen extends StatelessWidget {
                       final image = networkImage.isNotEmpty
                           ? networkImage
                           : TImageStrings.lightLogo;
-                      return TCircularImage(
-                        image: image,
-                        width: 80,
-                        height: 80,
-                        isNetworkImage: true,
-                      );
+                      return controller.imageLoading.value
+                          ? const TShimmerEffect(
+                              width: 80,
+                              height: 80,
+                              radius: 80,
+                            )
+                          : TCircularImage(
+                              image: image,
+                              width: 80,
+                              height: 80,
+                              isNetworkImage: true,
+                            );
                     }),
                     TextButton(
                         onPressed: () {

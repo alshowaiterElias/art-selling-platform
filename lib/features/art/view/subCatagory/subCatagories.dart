@@ -15,7 +15,7 @@ class SubCatagoriesScreen extends StatelessWidget {
     // required this.catagory,
   });
 
-  // final CatagoryModel catagory;
+  // final CategoryModel catagory;
 
   @override
   Widget build(BuildContext context) {
