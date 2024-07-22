@@ -46,24 +46,12 @@ class TDummyData {
         targetScreen: TRoutes.order),
     BannerModel(
         active: true,
-        imageUrl: TImageStrings.lightLogo,
+        imageUrl: TImageStrings.banner1,
         targetScreen: TRoutes.cart),
     BannerModel(
         active: true,
-        imageUrl: TImageStrings.lightLogo,
+        imageUrl: TImageStrings.banner2,
         targetScreen: TRoutes.favoriates),
-    BannerModel(
-        active: true,
-        imageUrl: TImageStrings.lightLogo,
-        targetScreen: TRoutes.search),
-    BannerModel(
-        active: true,
-        imageUrl: TImageStrings.lightLogo,
-        targetScreen: TRoutes.settings),
-    BannerModel(
-        active: false,
-        imageUrl: TImageStrings.lightLogo,
-        targetScreen: TRoutes.userAddress),
   ];
 
   // static final List<ProductModel> products = [

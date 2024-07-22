@@ -5,8 +5,8 @@ class TRoutes {
   static const settings = "/settings";
   static const subCatagories = "/subCatagories";
   static const search = "/search";
-  static const productReviews = "/productReviews";
-  static const productDetails = "/productDetails";
+  static const productReviews = "/artReviews";
+  static const productDetails = "/artDetails";
   static const order = "/order";
   static const checkout = "/checkout";
   static const cart = "/cart";

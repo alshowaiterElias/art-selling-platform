@@ -1,6 +1,7 @@
 import 'package:art_selling_platform/common/appbar/appbar.dart';
 import 'package:art_selling_platform/common/texts/sectionHeader.dart';
 import 'package:art_selling_platform/data/dummyData/dummy_data.dart';
+import 'package:art_selling_platform/data/repos/banner.dart';
 import 'package:art_selling_platform/data/repos/catagory.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
@@ -53,7 +54,7 @@ class UploadScreen extends StatelessWidget {
                 icon: Iconsax.additem,
                 title: "Upload Banners",
                 onTap: () {
-                  // BannerRepo.instance.uploadDummyData(TDummyData.banners);
+                  BannerRepo.instance.uploadDummyData(TDummyData.banners);
                 },
               ),
               const SizedBox(

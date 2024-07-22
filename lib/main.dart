@@ -1,6 +1,6 @@
 import 'package:art_selling_platform/bindings/general_bindings.dart';
 import 'package:art_selling_platform/data/repos/authentication.dart';
-import 'package:art_selling_platform/features/authentication/views/onBoarding/onBoarding.dart';
+import 'package:art_selling_platform/routes/app_routes.dart';
 import 'package:art_selling_platform/utils/themes/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -33,8 +33,11 @@ class App extends StatelessWidget {
       initialBinding: GeneralBindings(),
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
+      getPages: TAppRoutes.pages,
       darkTheme: TAppTheme.darkTheme,
-      home: const OnBoarding(),
+      home: const Scaffold(
+        body: CircularProgressIndicator(),
+      ),
     );
   }
 }
