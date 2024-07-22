@@ -1,7 +1,9 @@
 import 'package:art_selling_platform/common/cards/card_vertical.dart';
 import 'package:art_selling_platform/common/custom_shapes/Containers/primaryHeaderContainer.dart';
 import 'package:art_selling_platform/common/layout/gridLayout.dart';
+import 'package:art_selling_platform/common/shimmer/vertical_product_shimmer.dart';
 import 'package:art_selling_platform/common/texts/sectionHeader.dart';
+import 'package:art_selling_platform/features/art/controllers/product_controller.dart';
 import 'package:art_selling_platform/features/art/view/allProducts/allProducts.dart';
 import 'package:art_selling_platform/features/art/view/home/widgets/homeAppbar.dart';
 import 'package:art_selling_platform/features/art/view/home/widgets/homeHorizantalScrollSection.dart';
@@ -16,7 +18,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.put(ProductController());
+    final controller = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -30,14 +32,7 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: TSizes.spaceBtwSections,
                   ),
-                  //SearchBox
-                  // const TSearchContainer(
-                  //   text: "بحث",
-                  //   icon: Iconsax.search_normal,
-                  // ),
-                  // const SizedBox(
-                  //   height: TSizes.spaceBtwSections,
-                  // ),
+
                   //Scrolling Section
                   Padding(
                     padding: const EdgeInsets.only(left: TSizes.defaultSpace),
@@ -84,24 +79,26 @@ class HomeScreen extends StatelessWidget {
                   ),
                   //Grid
 
-                  // if (controller.isLoading.value) {
-                  //   return const TVerticalProductShimmer();
-                  // }
-                  // if (controller.featuredProducts.isEmpty) {
-                  //   return Center(
-                  //     child: Text(
-                  //       "No Data found",
-                  //       style: Theme.of(context).textTheme.bodyMedium,
-                  //     ),
-                  //   );
-                  // }
-                  TGridLayout(
-                      itemCount: 5, //controller.featuredProducts.length,
-                      itemBuilder: (_, index) {
-                        return TCardVertical(
-                            // product: controller.featuredProducts[index],
-                            );
-                      })
+                  Obx(() {
+                    if (controller.isLoading.value) {
+                      return const TVerticalProductShimmer();
+                    }
+                    if (controller.featuredProducts.isEmpty) {
+                      return Center(
+                        child: Text(
+                          "لا تتوفر اي منتجات",
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      );
+                    }
+                    return TGridLayout(
+                        itemCount: controller.featuredProducts.length,
+                        itemBuilder: (_, index) {
+                          return TCardVertical(
+                            product: controller.featuredProducts[index],
+                          );
+                        });
+                  })
                 ],
               ),
             )

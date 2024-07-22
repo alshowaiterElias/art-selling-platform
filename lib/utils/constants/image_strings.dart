@@ -36,4 +36,12 @@ class TImageStrings {
 
   static const String banner1 = "assets/images/banners/banner1.png";
   static const String banner2 = "assets/images/banners/banner2.png";
+
+  static const String artest1 = "assets/images/artests/MSA.png";
+  static const String artest2 = "assets/images/artests/LIA.png";
+
+  static const String lastSupper = "assets/images/products/lastSupper.png";
+  static const String monaLisa = "assets/images/products/monaLisa.png";
+  static const String starryNight = "assets/images/products/StarryNight.png";
+  static const String theKiss = "assets/images/products/theKiss.png";
 }

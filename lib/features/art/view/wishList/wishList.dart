@@ -2,6 +2,7 @@ import 'package:art_selling_platform/common/appbar/appbar.dart';
 import 'package:art_selling_platform/common/cards/card_vertical.dart';
 import 'package:art_selling_platform/common/icons/TCircularIcon.dart';
 import 'package:art_selling_platform/common/layout/gridLayout.dart';
+import 'package:art_selling_platform/features/art/models/product_model.dart';
 import 'package:art_selling_platform/nav.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
@@ -40,7 +41,9 @@ class WishlistScreen extends StatelessWidget {
             child: TGridLayout(
               itemCount: 3,
               itemBuilder: (_, index) {
-                return const TCardVertical();
+                return TCardVertical(
+                  product: ProductModel.empty(),
+                );
               },
             )),
       ),

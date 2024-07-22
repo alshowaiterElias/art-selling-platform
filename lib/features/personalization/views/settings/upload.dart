@@ -3,6 +3,7 @@ import 'package:art_selling_platform/common/texts/sectionHeader.dart';
 import 'package:art_selling_platform/data/dummyData/dummy_data.dart';
 import 'package:art_selling_platform/data/repos/banner.dart';
 import 'package:art_selling_platform/data/repos/catagory.dart';
+import 'package:art_selling_platform/data/repos/product.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,7 @@ class UploadScreen extends StatelessWidget {
                 icon: Iconsax.shopping_bag,
                 title: "Upload Products",
                 onTap: () {
-                  // ProductRepo.instance.uploadDummyData(TDummyData.products);
+                  ProductRepo.instance.uploadDummyData(TDummyData.products);
                 },
               ),
               const SizedBox(

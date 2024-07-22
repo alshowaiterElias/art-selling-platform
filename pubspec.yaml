@@ -80,6 +80,8 @@ flutter:
   assets:
     - assets/images/logo/
     - assets/images/category/
+    - assets/images/artests/
+    - assets/images/products/
     - assets/images/banners/
     - assets/images/onBoarding/
     - assets/images/authAnimations/

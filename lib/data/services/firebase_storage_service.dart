@@ -14,6 +14,7 @@ class FirebaseStorageService extends GetxController {
       final byteData = await rootBundle.load(path);
       final imageData = byteData.buffer
           .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes);
+      print(path);
       return imageData;
     } catch (e) {
       throw "خطا في الصورة";

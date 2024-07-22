@@ -2,8 +2,9 @@ import 'package:art_selling_platform/common/custom_shapes/Containers/circularCon
 import 'package:art_selling_platform/common/styles/TShadowStyle.dart';
 import 'package:art_selling_platform/common/texts/art_title.dart';
 import 'package:art_selling_platform/common/texts/art_title_with_icon.dart';
+import 'package:art_selling_platform/features/art/controllers/product_controller.dart';
+import 'package:art_selling_platform/features/art/models/product_model.dart';
 import 'package:art_selling_platform/features/art/view/art_Details/art_details.dart';
-import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:art_selling_platform/common/icons/favoirate_icon.dart';
 import 'package:art_selling_platform/common/images/roundedImages.dart';
@@ -19,20 +20,20 @@ import 'package:iconsax/iconsax.dart';
 class TCardVertical extends StatelessWidget {
   const TCardVertical({
     super.key,
-    // required this.product,
+    required this.product,
   });
 
-  // final ProductModel product;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
-    // final controller = ProductController.instance;
-    // final salePrecentage =
-    //     controller.calculateSalePrecentage(product.price, product.salePrice);
+    final controller = ProductController.instance;
+    final salePrecentage =
+        controller.calculateSalePrecentage(product.price, product.salePrice);
     final bool isDark = THelperFunctions.isDarkMode(context);
     return GestureDetector(
       onTap: () {
-        Get.to(() => ArtDetailsScreen());
+        Get.to(() => const ArtDetailsScreen());
       },
       child: Container(
         width: 180,
@@ -54,27 +55,30 @@ class TCardVertical extends StatelessWidget {
 
                   Center(
                     child: TRoundedImage(
-                        imgUrl: TImageStrings.lightLogo, isNetworkImage: false),
-                  ),
-                  // if (salePrecentage != null)
-                  Positioned(
-                    top: 12,
-                    child: TCircularContainer(
-                      raduis: TSizes.sm,
-                      backgroundColor: TColors.secondaryColor.withOpacity(0.8),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: TSizes.sm, vertical: TSizes.xs),
-                      child: Text("24%",
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelLarge!
-                              .apply(color: TColors.balck)),
+                      imgUrl: product.thumbNail,
+                      isNetworkImage: true,
                     ),
                   ),
+                  if (salePrecentage != null)
+                    Positioned(
+                      top: 12,
+                      child: TCircularContainer(
+                        raduis: TSizes.sm,
+                        backgroundColor:
+                            TColors.secondaryColor.withOpacity(0.8),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: TSizes.sm, vertical: TSizes.xs),
+                        child: Text("$salePrecentage %",
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge!
+                                .apply(color: TColors.balck)),
+                      ),
+                    ),
                   Positioned(
                     right: 3,
                     top: 3,
-                    child: TFavoriateIcon(productId: "product.id"),
+                    child: TFavoriateIcon(productId: product.id),
                   )
                 ],
               ),
@@ -90,12 +94,12 @@ class TCardVertical extends StatelessWidget {
                   //Name and Pitch Type
                   TArtTitle(
                     smallSize: true,
-                    title: "الموناليزا",
+                    title: product.title,
                   ),
                   const SizedBox(
                     height: TSizes.spaceBtwItems / 2,
                   ),
-                  TArtTitleWithIcon(title: "MSA"),
+                  TArtTitleWithIcon(title: product.artest!.name),
                 ],
               ),
             ),
@@ -107,30 +111,28 @@ class TCardVertical extends StatelessWidget {
                 Flexible(
                   child: Column(
                     children: [
-                      // if (product.productType ==
-                      //         ProductType.single.toString() &&
-                      //     product.salePrice > 0)
-                      Padding(
-                        padding: const EdgeInsets.only(left: TSizes.sm),
-                        child: Text(
-                          "10000",
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelMedium!
-                              .apply(decoration: TextDecoration.lineThrough),
+                      if (product.salePrice > 0)
+                        Padding(
+                          padding: const EdgeInsets.only(left: TSizes.sm),
+                          child: Text(
+                            product.salePrice.toString(),
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium!
+                                .apply(decoration: TextDecoration.lineThrough),
+                          ),
                         ),
-                      ),
                       Padding(
                         padding: const EdgeInsets.only(left: TSizes.sm),
                         child: TPriceText(
-                          price: "9000",
+                          price: product.price.toString(),
                         ),
                       ),
                     ],
                   ),
                 ),
                 //add to cart
-                ProductAddToCartIcon()
+                const ProductAddToCartIcon()
               ],
             ),
           ],

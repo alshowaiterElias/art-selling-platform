@@ -20,7 +20,7 @@ class BannerRepo extends GetxController {
           .map((banner) => BannerModel.fromSnapShot(banner))
           .toList();
     } catch (e) {
-      throw "Something went wrong";
+      throw "خطا في تنزيل الاعلانات";
     }
   }
 

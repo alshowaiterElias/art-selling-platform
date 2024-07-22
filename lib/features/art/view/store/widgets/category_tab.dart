@@ -3,6 +3,7 @@ import 'package:art_selling_platform/common/cards/card_vertical.dart';
 import 'package:art_selling_platform/common/layout/gridLayout.dart';
 import 'package:art_selling_platform/common/texts/sectionHeader.dart';
 import 'package:art_selling_platform/features/art/models/catagory_model.dart';
+import 'package:art_selling_platform/features/art/models/product_model.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,9 @@ class TCatTap extends StatelessWidget {
                 ),
                 TGridLayout(
                   itemCount: 4,
-                  itemBuilder: (p0, p1) => const TCardVertical(),
+                  itemBuilder: (p0, p1) => TCardVertical(
+                    product: ProductModel.empty(),
+                  ),
                 )
               ],
             ),
