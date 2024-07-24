@@ -2,10 +2,12 @@ import 'package:art_selling_platform/common/appbar/appbar.dart';
 import 'package:art_selling_platform/common/cards/card_vertical.dart';
 import 'package:art_selling_platform/common/icons/TCircularIcon.dart';
 import 'package:art_selling_platform/common/layout/gridLayout.dart';
-import 'package:art_selling_platform/features/art/models/product_model.dart';
+import 'package:art_selling_platform/common/shimmer/vertical_product_shimmer.dart';
+import 'package:art_selling_platform/features/art/controllers/favourites_controller.dart';
 import 'package:art_selling_platform/nav.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
+import 'package:art_selling_platform/utils/helpers/cloud_helper_function.dart';
 import 'package:art_selling_platform/utils/helpers/helper.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +19,7 @@ class WishlistScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final controller = FavouritesController.instance;
+    final controller = FavouritesController.instance;
     return Scaffold(
       appBar: TAppbar(
         title: Text(
@@ -38,13 +40,28 @@ class WishlistScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
             padding: const EdgeInsets.all(TSizes.defaultSpace),
-            child: TGridLayout(
-              itemCount: 3,
-              itemBuilder: (_, index) {
-                return TCardVertical(
-                  product: ProductModel.empty(),
-                );
-              },
+            child: Obx(
+              () => FutureBuilder(
+                  future: controller.favouritesProducts(),
+                  builder: (context, snapshot) {
+                    final widget = TCloudHelperFunction.checkMultiRecordState(
+                        snapshot: snapshot,
+                        loader: const TVerticalProductShimmer(),
+                        nothingFound: const Center(
+                          child: Text("لا توجد اي عناصر"),
+                        ));
+                    if (widget != null) return widget;
+
+                    final products = snapshot.data!;
+                    return TGridLayout(
+                      itemCount: products.length,
+                      itemBuilder: (_, index) {
+                        return TCardVertical(
+                          product: products[index],
+                        );
+                      },
+                    );
+                  }),
             )),
       ),
     );

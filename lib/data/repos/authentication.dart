@@ -3,6 +3,7 @@ import 'package:art_selling_platform/features/authentication/views/login/login.d
 import 'package:art_selling_platform/features/authentication/views/onBoarding/onBoarding.dart';
 import 'package:art_selling_platform/features/authentication/views/signup/verfiy_Email.dart';
 import 'package:art_selling_platform/nav.dart';
+import 'package:art_selling_platform/utils/local_storage/localStorage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
@@ -27,6 +28,7 @@ class AuthenticationRepo extends GetxController {
     final user = _auth.currentUser;
     if (user != null) {
       if (user.emailVerified) {
+        await TLocalStorage.init(user.uid);
         Get.offAll(() => const NavigationMenu());
       } else {
         Get.offAll(() => VerfiyEmailScreen(email: _auth.currentUser?.email));

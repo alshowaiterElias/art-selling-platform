@@ -52,7 +52,7 @@ class ArtDetailsWithImageSlider extends StatelessWidget {
               showBackArrow: true,
               actions: [
                 TFavoriateIcon(
-                  productId: "product.id",
+                  productId: product.id,
                 )
               ],
             )

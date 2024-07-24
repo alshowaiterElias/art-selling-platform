@@ -40,7 +40,7 @@ class ArtestScreen extends StatelessWidget {
                 if (controller.allArtests.isEmpty) {
                   return Center(
                     child: Text(
-                      "لا يوجد اي فنانون حاليا",
+                      "لا يوجد اي فنانين حاليا",
                       style: Theme.of(context)
                           .textTheme
                           .bodyMedium!
