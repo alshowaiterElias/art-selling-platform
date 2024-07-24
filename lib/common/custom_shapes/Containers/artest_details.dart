@@ -1,11 +1,9 @@
 import 'package:art_selling_platform/common/custom_shapes/Containers/circularContainer.dart';
 import 'package:art_selling_platform/common/images/circularImages.dart';
 import 'package:art_selling_platform/common/texts/art_title_with_icon.dart';
-import 'package:art_selling_platform/utils/constants/colors.dart';
+import 'package:art_selling_platform/features/art/models/artest_model.dart';
 import 'package:art_selling_platform/utils/constants/enums.dart';
-import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
-import 'package:art_selling_platform/utils/helpers/helper.dart';
 import 'package:flutter/material.dart';
 
 class TArtestDetails extends StatelessWidget {
@@ -13,10 +11,10 @@ class TArtestDetails extends StatelessWidget {
     super.key,
     this.onTap,
     this.showBorder = true,
-    // required this.brand,
+    required this.artest,
   });
 
-  // final BrandModel brand;
+  final ArtestModel artest;
   final void Function()? onTap;
   final bool showBorder;
 
@@ -33,11 +31,8 @@ class TArtestDetails extends StatelessWidget {
             Flexible(
               child: TCircularImage(
                 isNetworkImage: true,
-                image: TImageStrings.lightLogo,
+                image: artest.image,
                 backgroundColor: Colors.transparent,
-                overlayColor: THelperFunctions.isDarkMode(context)
-                    ? TColors.white
-                    : TColors.balck,
               ),
             ),
             const SizedBox(
@@ -48,13 +43,12 @@ class TArtestDetails extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TArtTitleWithIcon(
-                    title: "MSA",
+                  TArtTitleWithIcon(
+                    title: artest.name,
                     textSizes: TextSizes.large,
                   ),
                   Text(
-                    // "${brand.productsCount ?? 0} products",
-                    "فنانه تشكيلية",
+                    artest.phoneNumber,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium,
                   )

@@ -1,12 +1,14 @@
 import 'package:art_selling_platform/common/appbar/appbar.dart';
 import 'package:art_selling_platform/common/texts/sectionHeader.dart';
 import 'package:art_selling_platform/data/dummyData/dummy_data.dart';
+import 'package:art_selling_platform/data/repos/artests.dart';
 import 'package:art_selling_platform/data/repos/banner.dart';
 import 'package:art_selling_platform/data/repos/catagory.dart';
 import 'package:art_selling_platform/data/repos/product.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class UploadScreen extends StatelessWidget {
@@ -63,9 +65,9 @@ class UploadScreen extends StatelessWidget {
               ),
               TUploadListItem(
                 icon: Iconsax.shop,
-                title: "Upload Brands",
+                title: "Upload Artestss",
                 onTap: () {
-                  // Get.put(BrandsRepo()).uploadDummyData(TDummyData.brands);
+                  Get.put(ArtestsRepo()).uploadDummyData(TDummyData.artests);
                 },
               ),
               const SizedBox(
@@ -80,7 +82,7 @@ class UploadScreen extends StatelessWidget {
               ),
               TUploadListItem(
                 icon: Iconsax.cloud_sunny1,
-                title: "Upload Brands & Categories Relation Data",
+                title: "Upload artests & Categories Relation Data",
                 onTap: () {},
               ),
               const SizedBox(

@@ -3,8 +3,11 @@ import 'package:art_selling_platform/common/appbar/appbar.dart';
 import 'package:art_selling_platform/common/appbar/tabBar.dart';
 
 import 'package:art_selling_platform/common/custom_shapes/Containers/artest_details.dart';
+import 'package:art_selling_platform/common/shimmer/artests_shimmer.dart';
+import 'package:art_selling_platform/features/art/controllers/artest_controller.dart';
 import 'package:art_selling_platform/features/art/controllers/catagory_controller.dart';
-import 'package:art_selling_platform/features/art/view/artests/brands.dart';
+import 'package:art_selling_platform/features/art/view/artests/artestProduts.dart';
+import 'package:art_selling_platform/features/art/view/artests/artests.dart';
 import 'package:art_selling_platform/features/art/view/store/widgets/category_tab.dart';
 import 'package:art_selling_platform/utils/helpers/helper.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +23,7 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final catagories = CatagoryController.instance.featuredCatagories;
-    // final controller = Get.put(BrandController());
+    final controller = Get.put(ArtestController());
     return DefaultTabController(
       length: catagories.length,
       child: Scaffold(
@@ -67,41 +70,43 @@ class StoreScreen extends StatelessWidget {
                             TSectionHeader(
                               title: "فنانون",
                               onPressd: () {
-                                Get.to(() => const BrandsScreen());
+                                Get.to(() => const ArtestScreen());
                               },
                             ),
                             const SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
                             //Grid
 
-                            // if (controller.isLoading.value) {
-                            //   return const TBrandsShimmer();
-                            // }
-                            // if (controller.featuredBrands.isEmpty) {
-                            //   return Center(
-                            //     child: Text(
-                            //       "No Data Found",
-                            //       style: Theme.of(context)
-                            //           .textTheme
-                            //           .bodyMedium!
-                            //           .apply(color: Colors.white),
-                            //     ),
-                            //   );
-                            // }
-                            // return
-                            TGridLayout(
-                              mainAxiesExtent: 80,
-                              itemCount: 2,
-                              itemBuilder: (_, index) {
-                                // final brand =
-                                //     controller.featuredBrands[index];
-                                return TArtestDetails(onTap: () {}
-                                    // => Get.to(
-                                    //     () => BrandProducts(brand: brand)),
-                                    // brand: brand,
-                                    );
-                              },
-                            )
+                            Obx(() {
+                              if (controller.isLoading.value) {
+                                return const TArtestsShimmer();
+                              }
+                              if (controller.featuredArtests.isEmpty) {
+                                return Center(
+                                  child: Text(
+                                    "لا يوجد اي فنانون حاليا",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .apply(color: Colors.white),
+                                  ),
+                                );
+                              }
+
+                              return TGridLayout(
+                                mainAxiesExtent: 80,
+                                itemCount: controller.featuredArtests.length,
+                                itemBuilder: (_, index) {
+                                  final artest =
+                                      controller.featuredArtests[index];
+                                  return TArtestDetails(
+                                    artest: artest,
+                                    onTap: () => Get.to(
+                                        () => ArtestProducts(artest: artest)),
+                                  );
+                                },
+                              );
+                            })
                           ],
                         )),
                     bottom: TTabBar(

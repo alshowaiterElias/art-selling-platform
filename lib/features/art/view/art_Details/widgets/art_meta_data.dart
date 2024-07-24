@@ -7,7 +7,6 @@ import 'package:art_selling_platform/features/art/models/product_model.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/enums.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
-import 'package:art_selling_platform/utils/helpers/helper.dart';
 import 'package:flutter/material.dart';
 
 class ArtMetaData extends StatelessWidget {
@@ -23,7 +22,6 @@ class ArtMetaData extends StatelessWidget {
     final controller = ProductController.instance;
     final salePrecentage =
         controller.calculateSalePrecentage(product.price, product.salePrice);
-    final bool isDark = THelperFunctions.isDarkMode(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -78,9 +76,10 @@ class ArtMetaData extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text("متوفر", style: Theme.of(context).textTheme.titleMedium),
+            Text(product.date.toString(),
+                style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(width: TSizes.spaceBtwItems),
-            const TArtTitleText(title: ":الحالة"),
+            const TArtTitleText(title: ":تاريخ الرسم"),
           ],
         ),
 
@@ -89,9 +88,7 @@ class ArtMetaData extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             TArtTitleWithIcon(
-              title: product.artest != null
-                  ? product.artest!.name
-                  : "", // product.brand != null ? product.brand!.name : "",
+              title: product.artest != null ? product.artest!.name : "",
               textSizes: TextSizes.medium,
             ),
             const SizedBox(width: TSizes.spaceBtwItems),

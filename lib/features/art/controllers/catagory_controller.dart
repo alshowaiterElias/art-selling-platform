@@ -1,5 +1,7 @@
 import 'package:art_selling_platform/data/repos/catagory.dart';
+import 'package:art_selling_platform/data/repos/product.dart';
 import 'package:art_selling_platform/features/art/models/catagory_model.dart';
+import 'package:art_selling_platform/features/art/models/product_model.dart';
 import 'package:art_selling_platform/utils/loaders/loaders.dart';
 import 'package:get/get.dart';
 
@@ -49,10 +51,15 @@ class CatagoryController extends GetxController {
   }
 
   //get catagory or subcatagory products
-  // Future<List<ProductModel>> getCatagoryProduct(
-  //     {required String catagoryId, int limit = 4}) async {
-  //   final products = await ProductRepo.instance
-  //       .getProductsForCatagory(catagoryId: catagoryId, limit: limit);
-  //   return products;
-  // }
+  Future<List<ProductModel>> getCatagoryProduct(
+      {required String catagoryId, int limit = 4}) async {
+    try {
+      final products = await ProductRepo.instance
+          .getProductsForCatagory(catagoryId: catagoryId, limit: limit);
+      return products;
+    } catch (e) {
+      TLoaders.errorSnackBar(title: "يا ساتر", message: e.toString());
+      return [];
+    }
+  }
 }

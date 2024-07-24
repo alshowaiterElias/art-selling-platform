@@ -9,7 +9,7 @@ class TCloudHelperFunction {
     }
     if (!snapshot.hasData || snapshot.data == null) {
       return const Center(
-        child: Text("No data found"),
+        child: Text("لا توجد بيانات"),
       );
     }
     if (snapshot.hasError) {
@@ -34,7 +34,7 @@ class TCloudHelperFunction {
     if (!snapshot.hasData || snapshot.data == null || snapshot.data!.isEmpty) {
       if (nothingFound != null) return nothingFound;
       return const Center(
-        child: Text("No Data Found"),
+        child: Text("لا توجد بيانات"),
       );
     }
 

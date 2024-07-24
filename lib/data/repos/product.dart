@@ -14,7 +14,6 @@ class ProductRepo extends GetxController {
     final storage = Get.put(FirebaseStorageService());
 
     for (var product in products) {
-      print(product.thumbNail);
       final thumbNail = await storage.getImageDataFromAsset(product.thumbNail);
 
       final url = await storage.uploadImageData(
@@ -65,16 +64,16 @@ class ProductRepo extends GetxController {
   }
 
   Future<List<ProductModel>> getProdcutsForArtest(
-      {required String brandId, int limit = -1}) async {
+      {required String artestId, int limit = -1}) async {
     try {
       final querySnapShot = limit == -1
           ? await _db
               .collection("Products")
-              .where("Artest.Id", isEqualTo: brandId)
+              .where("Artest.Id", isEqualTo: artestId)
               .get()
           : await _db
               .collection("Products")
-              .where("Artest.Id", isEqualTo: brandId)
+              .where("Artest.Id", isEqualTo: artestId)
               .limit(limit)
               .get();
       final products = querySnapShot.docs
@@ -87,21 +86,24 @@ class ProductRepo extends GetxController {
   }
 
   Future<List<ProductModel>> getProductsForCatagory(
-      {required catagoryId, int limit = 4}) async {
+      {required catagoryId, int limit = -1}) async {
     try {
       final productCatagoryQuery = limit == -1
           ? await _db
-              .collection("ProductCatagory")
-              .where("catagoryId", isEqualTo: catagoryId)
+              .collection("ProductCategory")
+              .where("CategoryId", isEqualTo: catagoryId)
               .get()
           : await _db
-              .collection("ProductCatagory")
-              .where("catagoryId", isEqualTo: catagoryId)
+              .collection("ProductCategory")
+              .where("CategoryId", isEqualTo: catagoryId)
               .limit(limit)
               .get();
       List<String> productIds = productCatagoryQuery.docs
-          .map((e) => e["productId"] as String)
+          .map((e) => e["ProductId"] as String)
           .toList();
+
+      if (productIds.isEmpty) return [];
+
       final productQuery = await _db
           .collection("Products")
           .where(FieldPath.documentId, whereIn: productIds)

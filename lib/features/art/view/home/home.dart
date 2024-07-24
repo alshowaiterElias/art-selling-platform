@@ -10,6 +10,7 @@ import 'package:art_selling_platform/features/art/view/home/widgets/homeHorizant
 import 'package:art_selling_platform/features/art/view/home/widgets/homeSlider.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -69,8 +70,13 @@ class HomeScreen extends StatelessWidget {
                   TSectionHeader(
                     title: "الاكثر شهرة",
                     onPressd: () {
-                      Get.to(() => const AllProductsScreen(
-                            title: "Popular Products",
+                      Get.to(() => AllProductsScreen(
+                            title: "الاكثر شهرة",
+                            query: FirebaseFirestore.instance
+                                .collection("Products")
+                                .where("IsFeatured", isEqualTo: true)
+                                .limit(6),
+                            futureMethod: controller.fetchAllFeaturedProduct(),
                           ));
                     },
                   ),

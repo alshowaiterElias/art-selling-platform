@@ -2,8 +2,8 @@ import 'package:art_selling_platform/common/layout/gridLayout.dart';
 import 'package:art_selling_platform/common/shimmer/shimmer_effect.dart';
 import 'package:flutter/material.dart';
 
-class TBrandsShimmer extends StatelessWidget {
-  const TBrandsShimmer({super.key, this.itemCount = 4});
+class TArtestsShimmer extends StatelessWidget {
+  const TArtestsShimmer({super.key, this.itemCount = 4});
 
   final int itemCount;
 

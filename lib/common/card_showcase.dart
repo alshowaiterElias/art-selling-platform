@@ -1,17 +1,20 @@
 import 'package:art_selling_platform/common/custom_shapes/Containers/circularContainer.dart';
 import 'package:art_selling_platform/common/custom_shapes/Containers/artest_details.dart';
+import 'package:art_selling_platform/common/shimmer/shimmer_effect.dart';
+import 'package:art_selling_platform/features/art/models/artest_model.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:art_selling_platform/utils/helpers/helper.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class TCardShowCase extends StatelessWidget {
   const TCardShowCase({
     super.key,
     required this.images,
-    // required this.brand,
+    required this.artest,
   });
-  // final BrandModel brand;
+  final ArtestModel artest;
   final List<String> images;
   @override
   Widget build(BuildContext context) {
@@ -23,8 +26,8 @@ class TCardShowCase extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: TSizes.spaceBtwItems),
       child: Column(
         children: [
-          const TArtestDetails(
-            // brand: brand,
+          TArtestDetails(
+            artest: artest,
             showBorder: false,
           ),
           Row(
@@ -46,16 +49,11 @@ Widget cardImageDetails(String image, context) {
               : TColors.white,
           margin: const EdgeInsets.only(right: TSizes.sm),
           padding: const EdgeInsets.all(TSizes.sm),
-          child: Image(
-            image: AssetImage(image),
-          )
-          // CachedNetworkImage(
-          //   imageUrl: image,
-          //   fit: BoxFit.contain,
-          //   progressIndicatorBuilder: (context, url, progress) =>
-          //       const TShimmerEffect(width: 100, height: 100),
-          //   errorWidget: (context, url, error) => const Icon(Icons.error),
-          // )
-
-          ));
+          child: CachedNetworkImage(
+            imageUrl: image,
+            fit: BoxFit.contain,
+            progressIndicatorBuilder: (context, url, progress) =>
+                const TShimmerEffect(width: 100, height: 100),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+          )));
 }
