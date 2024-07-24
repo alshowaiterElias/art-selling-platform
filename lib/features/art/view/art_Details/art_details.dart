@@ -1,4 +1,5 @@
 import 'package:art_selling_platform/common/texts/sectionHeader.dart';
+import 'package:art_selling_platform/features/art/models/product_model.dart';
 import 'package:art_selling_platform/features/art/view/art_Details/widgets/bottomNavAddToCart.dart';
 import 'package:art_selling_platform/features/art/view/art_Details/widgets/art_details_with_image_slider.dart';
 import 'package:art_selling_platform/features/art/view/art_Details/widgets/art_meta_data.dart';
@@ -15,10 +16,10 @@ import 'package:readmore/readmore.dart';
 class ArtDetailsScreen extends StatelessWidget {
   const ArtDetailsScreen({
     super.key,
-    // required this.product,
+    required this.product,
   });
 
-  // final ProductModel product;
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +27,9 @@ class ArtDetailsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ArtDetailsWithImageSlider(),
+            ArtDetailsWithImageSlider(
+              product: product,
+            ),
             Padding(
               padding: const EdgeInsets.only(
                   right: TSizes.defaultSpace,
@@ -38,13 +41,10 @@ class ArtDetailsScreen extends StatelessWidget {
                   //ratings and share
                   const TRatingAndShare(),
                   //price title available type
-                  ArtMetaData(),
+                  ArtMetaData(
+                    product: product,
+                  ),
 
-                  //attribuites
-                  // if (product.productType == ProductType.variable.toString())
-                  // ArtAttribute(),
-
-                  // if (product.productType == ProductType.variable.toString())
                   const SizedBox(height: TSizes.spaceBtwSections),
 
                   //checkout button
@@ -59,17 +59,21 @@ class ArtDetailsScreen extends StatelessWidget {
                   //description
                   const SizedBox(height: TSizes.spaceBtwSections),
 
-                  const TSectionHeader(title: "الوصف", showActionButton: false),
+                  const TSectionHeader(
+                    title: "الوصف",
+                    showActionButton: true,
+                    buttonTitle: "",
+                  ),
                   const SizedBox(height: TSizes.spaceBtwItems),
-                  const ReadMoreText(
-                    "هذه االلوحة استغرت شهر لليتم صنعها",
+                  ReadMoreText(
+                    product.description ?? "",
                     trimLines: 2,
                     trimCollapsedText: "عرض المزيد",
                     trimExpandedText: " عرض أقل ",
-                    moreStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
-                    lessStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                    moreStyle: const TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.w800),
+                    lessStyle: const TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.w800),
                   ),
 
                   //reviews
@@ -78,19 +82,19 @@ class ArtDetailsScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TSectionHeader(
-                        title: "تقييم (199)",
-                        onPressd: () {},
-                        showActionButton: false,
-                      ),
                       IconButton(
                           onPressed: () {
                             Get.to(() => const ArtReviewsScreen());
                           },
                           icon: const Icon(
-                            Iconsax.arrow_right_3,
+                            Iconsax.arrow_left,
                             size: 18,
-                          ))
+                          )),
+                      TSectionHeader(
+                        title: "تقييم (199)",
+                        onPressd: () {},
+                        showActionButton: false,
+                      ),
                     ],
                   ),
                   const SizedBox(height: TSizes.spaceBtwSections),
