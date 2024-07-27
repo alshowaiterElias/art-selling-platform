@@ -4,9 +4,10 @@ import 'package:art_selling_platform/common/images/roundedImages.dart';
 import 'package:art_selling_platform/common/texts/art_title_2.dart';
 import 'package:art_selling_platform/common/texts/art_title_with_icon.dart';
 import 'package:art_selling_platform/common/texts/priceText.dart';
+import 'package:art_selling_platform/features/art/controllers/product_controller.dart';
+import 'package:art_selling_platform/features/art/models/product_model.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/enums.dart';
-import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:art_selling_platform/utils/helpers/helper.dart';
 import 'package:flutter/material.dart';
@@ -16,16 +17,16 @@ import 'package:iconsax/iconsax.dart';
 class TCardHorizontal extends StatelessWidget {
   const TCardHorizontal({
     super.key,
-    // required this.product,
+    required this.product,
   });
 
-  // final ProductModel product;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
-    // final controller = ProductController.instance;
-    // final salePrecentage =
-    //     controller.calculateSalePrecentage(product.price, product.salePrice);
+    final controller = ProductController.instance;
+    final salePrecentage =
+        controller.calculateSalePrecentage(product.price, product.salePrice);
     final bool isDark = THelperFunctions.isDarkMode(context);
     return Container(
       width: 310,
@@ -47,33 +48,33 @@ class TCardHorizontal extends StatelessWidget {
                   width: 120,
                   height: 120,
                   child: TRoundedImage(
-                    imgUrl: TImageStrings.lightLogo,
+                    imgUrl: product.thumbNail,
                     applyImageRaduis: true,
-                    isNetworkImage: false,
+                    isNetworkImage: true,
                   ),
                 ),
                 const SizedBox(width: TSizes.spaceBtwItems / 2),
                 //sale Tag
-                // if (salePrecentage != null)
-                Positioned(
-                  top: 0,
-                  child: TCircularContainer(
-                    raduis: TSizes.sm,
-                    backgroundColor: TColors.secondaryColor.withOpacity(0.8),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: TSizes.sm, vertical: TSizes.xs),
-                    child: Text("23%",
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelMedium!
-                            .apply(color: TColors.balck)),
+                if (salePrecentage != null)
+                  Positioned(
+                    top: 0,
+                    child: TCircularContainer(
+                      raduis: TSizes.sm,
+                      backgroundColor: TColors.secondaryColor.withOpacity(0.8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: TSizes.sm, vertical: TSizes.xs),
+                      child: Text("$salePrecentage %",
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelMedium!
+                              .apply(color: TColors.balck)),
+                    ),
                   ),
-                ),
                 Positioned(
                     right: 0,
                     top: -10,
                     child: TFavoriateIcon(
-                      productId: "product.id",
+                      productId: product.id,
                     ))
               ],
             ),
@@ -91,13 +92,13 @@ class TCardHorizontal extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TArtTitleText(
-                        title: "الموناليزا",
+                        title: product.title,
                         textSizes: TextSizes.small,
                       ),
                       const SizedBox(
                         height: TSizes.spaceBtwItems / 2,
                       ),
-                      TArtTitleWithIcon(title: "MSA"),
+                      TArtTitleWithIcon(title: product.artest!.name),
                     ],
                   ),
                   const Spacer(),
@@ -107,24 +108,23 @@ class TCardHorizontal extends StatelessWidget {
                       Flexible(
                         child: Column(
                           children: [
-                            // if (product.productType ==
-                            //         ProductType.single.toString() &&
-                            //     product.salePrice > 0)
-                            Padding(
-                              padding: const EdgeInsets.only(left: TSizes.sm),
-                              child: Text(
-                                "10000",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelMedium!
-                                    .apply(
-                                        decoration: TextDecoration.lineThrough),
+                            if (product.salePrice > 0)
+                              Padding(
+                                padding: const EdgeInsets.only(left: TSizes.sm),
+                                child: Text(
+                                  product.salePrice.toString(),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelMedium!
+                                      .apply(
+                                          decoration:
+                                              TextDecoration.lineThrough),
+                                ),
                               ),
-                            ),
                             Padding(
                               padding: const EdgeInsets.only(left: TSizes.sm),
                               child: TPriceText(
-                                price: "8000",
+                                price: product.price.toString(),
                               ),
                             ),
                           ],

@@ -20,7 +20,7 @@ class THorizantalListSection extends StatelessWidget {
       if (controller.featuredCatagories.isEmpty) {
         return Center(
           child: Text(
-            "No Data Found",
+            "لا يوجد هناك اصناف مضافة",
             style: Theme.of(context)
                 .textTheme
                 .bodyMedium!
@@ -42,7 +42,9 @@ class THorizantalListSection extends StatelessWidget {
               text: controller.featuredCatagories[index].name,
               textColor: TColors.white,
               onTap: () {
-                Get.to(() => const SubCatagoriesScreen());
+                Get.to(() => SubCatagoriesScreen(
+                      catagory: controller.featuredCatagories[index],
+                    ));
               },
             );
           },
