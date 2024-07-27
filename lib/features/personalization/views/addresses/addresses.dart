@@ -1,8 +1,10 @@
 import 'package:art_selling_platform/common/appbar/appbar.dart';
+import 'package:art_selling_platform/features/personalization/controllers/address_controller.dart';
 import 'package:art_selling_platform/features/personalization/views/addresses/addNewAddress.dart';
 import 'package:art_selling_platform/features/personalization/views/addresses/widgets/signleAddress.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
+import 'package:art_selling_platform/utils/helpers/cloud_helper_function.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -13,7 +15,7 @@ class AddressesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.put(AddressController());
+    final controller = Get.put(AddressController());
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -35,15 +37,29 @@ class AddressesScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
             padding: const EdgeInsets.all(TSizes.defaultSpace),
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: 3,
-              itemBuilder: (context, index) {
-                return TSingleAddress(
-                  // address: addresses[index],
-                  onTap: () {},
-                );
-              },
+            child: Obx(
+              () => FutureBuilder(
+                  key: Key(controller.refreshData.value.toString()),
+                  future: controller.getAllUserAddresses(),
+                  builder: (context, snapshot) {
+                    final widget = TCloudHelperFunction.checkMultiRecordState(
+                        snapshot: snapshot);
+                    if (widget != null) return widget;
+
+                    final addresses = snapshot.data!;
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: addresses.length,
+                      itemBuilder: (context, index) {
+                        return TSingleAddress(
+                          address: addresses[index],
+                          onTap: () {
+                            controller.selectAddress(addresses[index]);
+                          },
+                        );
+                      },
+                    );
+                  }),
             )),
       ),
     );

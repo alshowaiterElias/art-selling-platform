@@ -1,67 +1,82 @@
 import 'package:art_selling_platform/common/custom_shapes/Containers/circularContainer.dart';
+import 'package:art_selling_platform/features/personalization/controllers/address_controller.dart';
+import 'package:art_selling_platform/features/personalization/models/address_model.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:art_selling_platform/utils/helpers/helper.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:iconsax/iconsax.dart';
 
 class TSingleAddress extends StatelessWidget {
   const TSingleAddress({
     super.key,
-    // required this.address,
+    required this.address,
     this.onTap,
   });
 
-  // final AddressModel address;
+  final AddressModel address;
   final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    // final controller = AddressController.intance;
+    final controller = AddressController.intance;
     final bool isDark = THelperFunctions.isDarkMode(context);
 
-    // final selectedAddressId = controller.selectedAddress.value.id;
-    // final selectedAddress = address.id == selectedAddressId;
-    return InkWell(
-      onTap: onTap,
-      child: TCircularContainer(
-        width: double.infinity,
-        showBorder: true,
-        padding: const EdgeInsets.all(TSizes.md),
-        backgroundColor: TColors.primaryColor.withOpacity(0.5),
-        borderColor: TColors.grey,
-        margin: const EdgeInsets.only(bottom: TSizes.spaceBtwItems),
-        child: Stack(
-          children: [
-            Positioned(
-              right: 5,
-              top: 0,
-              child: Icon(
-                Iconsax.tick_circle5,
-                color: TColors.dark,
+    return Obx(() {
+      final selectedAddressId = controller.selectedAddress.value.id;
+      final selectedAddress = address.id == selectedAddressId;
+
+      return InkWell(
+        onTap: onTap,
+        child: TCircularContainer(
+          width: double.infinity,
+          showBorder: true,
+          padding: const EdgeInsets.all(TSizes.md),
+          backgroundColor: selectedAddress
+              ? TColors.primaryColor.withOpacity(0.5)
+              : Colors.transparent,
+          borderColor: selectedAddress
+              ? Colors.transparent
+              : isDark
+                  ? TColors.darkerGrey
+                  : TColors.grey,
+          margin: const EdgeInsets.only(bottom: TSizes.spaceBtwItems),
+          child: Stack(
+            children: [
+              Positioned(
+                right: 5,
+                top: 0,
+                child: Icon(selectedAddress ? Iconsax.tick_circle5 : null,
+                    color: selectedAddress
+                        ? isDark
+                            ? TColors.light
+                            : TColors.dark
+                        : null),
               ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Elias",
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.titleLarge),
-                const SizedBox(height: TSizes.sm / 2),
-                Text("772546343", maxLines: 1, overflow: TextOverflow.ellipsis),
-                const SizedBox(height: TSizes.sm / 2),
-                Text(
-                  "إب, شارع تعز,دار الشرف",
-                  softWrap: true,
-                ),
-                const SizedBox(height: TSizes.sm / 2),
-              ],
-            )
-          ],
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(address.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.titleLarge),
+                  const SizedBox(height: TSizes.sm / 2),
+                  Text(address.phoneNumber,
+                      maxLines: 1, overflow: TextOverflow.ellipsis),
+                  const SizedBox(height: TSizes.sm / 2),
+                  Text(
+                    address.toString(),
+                    softWrap: true,
+                  ),
+                  const SizedBox(height: TSizes.sm / 2),
+                ],
+              )
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

@@ -1,4 +1,5 @@
 import 'package:art_selling_platform/common/appbar/appbar.dart';
+import 'package:art_selling_platform/features/personalization/controllers/address_controller.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:art_selling_platform/utils/validators/validiator.dart';
 import 'package:flutter/material.dart';
@@ -10,20 +11,20 @@ class AddNewAddress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final controller = AddressController.intance;
+    final controller = AddressController.intance;
     return Scaffold(
       appBar: const TAppbar(showBackArrow: true, title: Text("اضف عنوان جديد")),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Form(
-            // key: controller.addressFormKey,
+            key: controller.addressFormKey,
             child: Column(
               children: [
                 TextFormField(
                   validator: (value) =>
                       TValidiator.validateEmptyText("الاسم", value),
-                  // controller: controller.name,
+                  controller: controller.name,
                   decoration: const InputDecoration(
                       prefixIcon: Icon(Iconsax.user), labelText: "الاسم"),
                 ),
@@ -31,7 +32,7 @@ class AddNewAddress extends StatelessWidget {
                 TextFormField(
                   validator: (value) =>
                       TValidiator.validateEmptyText("رقم الهاتف", value),
-                  // controller: controller.phoneNumber,
+                  controller: controller.phoneNumber,
                   decoration: const InputDecoration(
                       prefixIcon: Icon(Iconsax.mobile),
                       labelText: "رقم الهاتف"),
@@ -43,7 +44,7 @@ class AddNewAddress extends StatelessWidget {
                       child: TextFormField(
                         validator: (value) =>
                             TValidiator.validateEmptyText("الشارع", value),
-                        // controller: controller.street,
+                        controller: controller.street,
                         decoration: const InputDecoration(
                             prefixIcon: Icon(Iconsax.building_31),
                             labelText: "الشارع"),
@@ -54,7 +55,7 @@ class AddNewAddress extends StatelessWidget {
                       child: TextFormField(
                         validator: (value) =>
                             TValidiator.validateEmptyText("الحارة", value),
-                        // controller: controller.neighborhood,
+                        controller: controller.neighborhood,
                         decoration: const InputDecoration(
                             prefixIcon: Icon(Iconsax.code),
                             labelText: "الحارة"),
@@ -66,7 +67,7 @@ class AddNewAddress extends StatelessWidget {
                 TextFormField(
                     validator: (value) =>
                         TValidiator.validateEmptyText("المدينة", value),
-                    // controller: controller.city,
+                    controller: controller.city,
                     decoration: const InputDecoration(
                         prefixIcon: Icon(Iconsax.building),
                         labelText: "المدينة")),
@@ -75,7 +76,7 @@ class AddNewAddress extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                       onPressed: () {
-                        // controller.addNewAddress();
+                        controller.addNewAddress();
                       },
                       child: const Text("حفظ")),
                 )
