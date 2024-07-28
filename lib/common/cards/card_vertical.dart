@@ -2,6 +2,7 @@ import 'package:art_selling_platform/common/custom_shapes/Containers/circularCon
 import 'package:art_selling_platform/common/styles/TShadowStyle.dart';
 import 'package:art_selling_platform/common/texts/art_title.dart';
 import 'package:art_selling_platform/common/texts/art_title_with_icon.dart';
+import 'package:art_selling_platform/features/art/controllers/cart_controller.dart';
 import 'package:art_selling_platform/features/art/controllers/product_controller.dart';
 import 'package:art_selling_platform/features/art/models/product_model.dart';
 import 'package:art_selling_platform/features/art/view/art_Details/art_details.dart';
@@ -134,7 +135,9 @@ class TCardVertical extends StatelessWidget {
                   ),
                 ),
                 //add to cart
-                const ProductAddToCartIcon()
+                ProductAddToCartIcon(
+                  product: product,
+                )
               ],
             ),
           ],
@@ -147,53 +150,45 @@ class TCardVertical extends StatelessWidget {
 class ProductAddToCartIcon extends StatelessWidget {
   const ProductAddToCartIcon({
     super.key,
-    // required this.product,
+    required this.product,
   });
 
-  // final ProductModel product;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
-    // final controller = CartController.instance;
-    return InkWell(
-        onTap: () {
-          // if (product.productType == ProductType.single.toString()) {
-          //   final cartItme = controller.convertToCartItem(product, 1);
-          //   controller.addOneToCart(cartItme);
-          // } else {
-          //   Get.to(() => PitchDetails(product: product));
-          // }
-        },
-        child:
-            // Obx(() {
-            //   final prodcutQuantityInCart =
-            //       controller.getProductQuantityInCart(product.id);
-
-            //   return
-            Container(
-          decoration: BoxDecoration(
-            color: TColors.primaryColor,
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(TSizes.cardRaduisMd),
-                bottomRight: Radius.circular(TSizes.cardRaduisMd)),
+    final controller = CartController.instance;
+    return InkWell(onTap: () {
+      if (controller.getProductQuantityInCart(product.id) == 0) {
+        final cartItme = controller.convertToCartItem(product);
+        controller.addOneToCart(cartItme);
+      }
+    }, child: Obx(() {
+      final prodcutQuantityInCart =
+          controller.getProductQuantityInCart(product.id);
+      return Container(
+        decoration: const BoxDecoration(
+          color: TColors.primaryColor,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(TSizes.cardRaduisMd),
+              bottomRight: Radius.circular(TSizes.cardRaduisMd)),
+        ),
+        child: SizedBox(
+          width: TSizes.iconsLg * 1.2,
+          height: TSizes.iconsLg * 1.2,
+          child: Center(
+            child: prodcutQuantityInCart > 0
+                ? Text(
+                    prodcutQuantityInCart.toString(),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .apply(color: TColors.white),
+                  )
+                : const Icon(Iconsax.add, color: TColors.white),
           ),
-          child: SizedBox(
-            width: TSizes.iconsLg * 1.2,
-            height: TSizes.iconsLg * 1.2,
-            child: Center(
-              child:
-                  // prodcutQuantityInCart > 0
-                  //     ? Text(
-                  //         prodcutQuantityInCart.toString(),
-                  //         style: Theme.of(context)
-                  //             .textTheme
-                  //             .bodyLarge!
-                  //             .apply(color: TColors.white),
-                  //       )
-                  //     :
-                  const Icon(Iconsax.add, color: TColors.white),
-            ),
-          ),
-        ));
+        ),
+      );
+    }));
   }
 }

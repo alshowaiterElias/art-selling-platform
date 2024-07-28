@@ -1,4 +1,6 @@
 import 'package:art_selling_platform/common/custom_shapes/Containers/circularContainer.dart';
+import 'package:art_selling_platform/features/art/controllers/checkout_controller.dart';
+import 'package:art_selling_platform/features/personalization/models/payment_method_model.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
@@ -11,19 +13,19 @@ import 'package:iconsax/iconsax.dart';
 class TPaymentTile extends StatelessWidget {
   const TPaymentTile({
     super.key,
-    // required this.payment,
+    required this.payment,
   });
 
-  // final PaymentMethodModel payment;
+  final PaymentMethodModel payment;
 
   @override
   Widget build(BuildContext context) {
-    // final controller = CheckoutController.instance;
+    final controller = CheckoutController.instance;
     return ListTile(
       contentPadding: const EdgeInsets.all(0),
       onTap: () {
-        // controller.selectedPayment.value = payment;
-        // Get.back();
+        controller.selectedPayment.value = payment;
+        Get.back();
       },
       leading: TCircularContainer(
         width: 60,
@@ -37,7 +39,7 @@ class TPaymentTile extends StatelessWidget {
           fit: BoxFit.contain,
         ),
       ),
-      title: Text("كريمي"),
+      title: Text(payment.name),
       trailing: const Icon(Iconsax.arrow_right_34),
     );
   }

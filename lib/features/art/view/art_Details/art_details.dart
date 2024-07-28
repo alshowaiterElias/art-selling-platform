@@ -23,7 +23,9 @@ class ArtDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: TBottomAddtoCart(),
+      bottomNavigationBar: TBottomAddtoCart(
+        product: product,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [

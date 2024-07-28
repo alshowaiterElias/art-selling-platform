@@ -9,13 +9,10 @@ import 'package:iconsax/iconsax.dart';
 class TAddRemoveCounter extends StatelessWidget {
   const TAddRemoveCounter({
     super.key,
-    required this.quantity,
-    this.add,
     this.remove,
   });
 
-  final int quantity;
-  final VoidCallback? add, remove;
+  final VoidCallback? remove;
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +33,13 @@ class TAddRemoveCounter extends StatelessWidget {
           onPressed: remove,
         ),
         const SizedBox(width: TSizes.spaceBtwItems),
-        Text(quantity.toString(),
-            style: Theme.of(context).textTheme.titleSmall),
-        const SizedBox(width: TSizes.spaceBtwItems),
-        TCircularIcon(
-          icon: Iconsax.add,
-          width: 32,
-          height: 32,
-          size: TSizes.md,
-          color: TColors.white,
-          backgroundColor: TColors.primaryColor,
-          onPressed: add,
+        GestureDetector(
+          onTap: remove,
+          child: Text("حذف ",
+              style: Theme.of(context)
+                  .textTheme
+                  .titleSmall!
+                  .apply(color: TColors.error)),
         ),
       ],
     );

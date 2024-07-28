@@ -20,37 +20,23 @@ class CartController extends GetxController {
 
   //add items into cart
   void addToCart(ProductModel product) {
-    if (productQuantityInCart.value < 1) {
-      TLoaders.customToast(message: "اختر كمية");
+    if (product.isFeatured == false) {
+      TLoaders.warningSnackBar(title: "يا ساتر", message: "المنتج غير متوفر");
       return;
-    } else {
-      if (product.isFeatured == false) {
-        TLoaders.warningSnackBar(title: "يا ساتر", message: "المنتج غير متوفر");
-        return;
-      }
     }
 
-    final selectedCartItem =
-        convertToCartItem(product, productQuantityInCart.value);
+    final selectedCartItem = convertToCartItem(product);
 
-    int index =
-        cartItems.indexWhere((e) => e.productId == selectedCartItem.productId);
-
-    if (index >= 0) {
-      cartItems[index].quantity = selectedCartItem.quantity;
-    } else {
-      cartItems.add(selectedCartItem);
-    }
+    cartItems.add(selectedCartItem);
 
     updateCart();
     TLoaders.customToast(message: "تمت اصافة اللوحة");
   }
 
-  CartItemModel convertToCartItem(ProductModel product, int quantity) {
+  CartItemModel convertToCartItem(ProductModel product) {
     final price = product.salePrice > 0.0 ? product.salePrice : product.price;
     return CartItemModel(
         productId: product.id,
-        quantity: quantity,
         artestName: product.artest != null ? product.artest!.name : "",
         image: product.thumbNail,
         price: price,
@@ -68,8 +54,8 @@ class CartController extends GetxController {
     int calculatedNoOfItem = 0;
 
     for (var item in cartItems) {
-      calculatedTotalPrice += (item.price) * item.quantity.toDouble();
-      calculatedNoOfItem += item.quantity;
+      calculatedTotalPrice += (item.price);
+      calculatedNoOfItem += 1;
     }
     totalCartPrice.value = calculatedTotalPrice;
     noOfCartItem.value = calculatedNoOfItem;
@@ -94,7 +80,7 @@ class CartController extends GetxController {
   int getProductQuantityInCart(String productId) {
     final foundItem = cartItems.where((e) => e.productId == productId).fold(
           0,
-          (previousValue, element) => previousValue + element.quantity,
+          (previousValue, element) => previousValue + 1,
         );
     return foundItem;
   }
@@ -106,40 +92,30 @@ class CartController extends GetxController {
   }
 
   void addOneToCart(CartItemModel item) {
-    int index = cartItems.indexWhere((e) => e.productId == item.productId);
-    if (index >= 0) {
-      cartItems[index].quantity++;
-    } else {
-      cartItems.add(item);
-    }
+    // int index = cartItems.indexWhere((e) => e.productId == item.productId);
+    cartItems.add(item);
+
     updateCart();
+    TLoaders.customToast(message: "تمت اضافة اللوحة الى قائمة المشتريات");
   }
 
   void removeOneFromCart(CartItemModel item) {
     int index = cartItems.indexWhere((e) => e.productId == item.productId);
-    if (index >= 0) {
-      if (cartItems[index].quantity > 1) {
-        cartItems[index].quantity--;
-      } else {
-        cartItems[index].quantity == 1
-            ? removeFromCartDialog(index)
-            : cartItems.removeAt(index);
-      }
-      updateCart();
-    }
+    removeFromCartDialog(index);
+    updateCart();
   }
 
   void removeFromCartDialog(int index) {
     Get.defaultDialog(
-        title: "Remove Item",
-        middleText: "Are you sure you want to remove this item?",
+        title: "حذف العنصر",
+        middleText: "هل انت متاكد من عملية الحذف؟",
         onConfirm: () {
           cartItems.removeAt(index);
           updateCart();
-          TLoaders.customToast(message: "Product removed from cart");
+          TLoaders.customToast(message: "تمت إزالة المنتج");
           Get.back();
         },
-        onCancel: () => Get.back());
+        onCancel: () => () => Get.back());
   }
 
   void updateAlreadyAddedProductCount(ProductModel product) {
