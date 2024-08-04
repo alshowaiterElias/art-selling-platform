@@ -1,3 +1,4 @@
+import 'package:art_selling_platform/features/art/controllers/cart_controller.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -6,14 +7,15 @@ class BillingAmountSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final controller = CartController.instance;
+    final controller = CartController.instance;
     return Column(
       children: [
         //subTotal
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("10000", style: Theme.of(context).textTheme.bodyMedium),
+            Text(controller.totalCartPrice.value.toString(),
+                style: Theme.of(context).textTheme.bodyMedium),
             Text("حسابك", style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
@@ -22,7 +24,8 @@ class BillingAmountSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("500", style: Theme.of(context).textTheme.labelLarge),
+            Text(controller.shippingCost.toString(),
+                style: Theme.of(context).textTheme.labelLarge),
             Text("حساب البرنامج",
                 style: Theme.of(context).textTheme.bodyMedium),
           ],
@@ -43,7 +46,7 @@ class BillingAmountSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("الحساب الكلي", style: Theme.of(context).textTheme.bodyMedium),
-            Text(("10500").toString(),
+            Text((controller.findTotalPrice().toString()).toString(),
                 style: Theme.of(context).textTheme.titleMedium),
           ],
         ),

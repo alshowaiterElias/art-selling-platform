@@ -35,7 +35,7 @@ class TPaymentTile extends StatelessWidget {
             : TColors.white,
         padding: const EdgeInsets.all(TSizes.sm),
         child: Image(
-          image: AssetImage(TImageStrings.lightLogo),
+          image: AssetImage(payment.image),
           fit: BoxFit.contain,
         ),
       ),

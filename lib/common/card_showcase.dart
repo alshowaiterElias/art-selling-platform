@@ -11,11 +11,11 @@ import 'package:flutter/material.dart';
 class TCardShowCase extends StatelessWidget {
   const TCardShowCase({
     super.key,
-    required this.images,
+    this.images,
     required this.artest,
   });
   final ArtestModel artest;
-  final List<String> images;
+  final List<String>? images;
   @override
   Widget build(BuildContext context) {
     return TCircularContainer(
@@ -30,10 +30,11 @@ class TCardShowCase extends StatelessWidget {
             artest: artest,
             showBorder: false,
           ),
-          Row(
-            children:
-                images.map((img) => cardImageDetails(img, context)).toList(),
-          )
+          if (images != null)
+            Row(
+              children:
+                  images!.map((img) => cardImageDetails(img, context)).toList(),
+            )
         ],
       ),
     );

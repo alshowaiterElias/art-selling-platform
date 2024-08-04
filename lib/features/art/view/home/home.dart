@@ -29,14 +29,14 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   //AppBar
-                  const THomeAppbar(),
-                  const SizedBox(
+                  THomeAppbar(),
+                  SizedBox(
                     height: TSizes.spaceBtwSections,
                   ),
 
                   //Scrolling Section
                   Padding(
-                    padding: const EdgeInsets.only(left: TSizes.defaultSpace),
+                    padding: EdgeInsets.only(left: TSizes.defaultSpace),
                     child: Column(
                       children: [
                         // Title
@@ -45,15 +45,15 @@ class HomeScreen extends StatelessWidget {
                           textColor: TColors.white,
                           showActionButton: false,
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: TSizes.spaceBtwSections,
                         ),
                         // Image-Text
-                        const THorizantalListSection()
+                        THorizantalListSection()
                       ],
                     ),
                   ),
-                  const SizedBox(height: TSizes.spaceBtwSections)
+                  SizedBox(height: TSizes.spaceBtwSections)
                 ],
               ),
             ),

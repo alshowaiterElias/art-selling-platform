@@ -31,7 +31,6 @@ class AllProductsScreen extends StatelessWidget {
         child: FutureBuilder(
             future: futureMethod ?? controller.fetchProductsByQuery(query),
             builder: (context, snapshot) {
-              print(snapshot.data);
               const loader = TVerticalProductShimmer();
               final widget = TCloudHelperFunction.checkMultiRecordState(
                   snapshot: snapshot, loader: loader);

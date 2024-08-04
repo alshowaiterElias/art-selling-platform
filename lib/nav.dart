@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import 'features/art/view/commission/commission.dart';
+
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
 
@@ -32,6 +34,8 @@ class NavigationMenu extends StatelessWidget {
             NavigationDestination(icon: Icon(Iconsax.home), label: "الرئيسية"),
             NavigationDestination(icon: Icon(Iconsax.shop), label: "المتجر"),
             NavigationDestination(icon: Icon(Iconsax.heart), label: "المفضلة"),
+            NavigationDestination(
+                icon: Icon(Iconsax.command), label: "طلب خاص"),
             NavigationDestination(icon: Icon(Iconsax.user), label: "المستخدم"),
           ],
         ),
@@ -47,6 +51,7 @@ class NavigationController extends GetxController {
     const HomeScreen(),
     const StoreScreen(),
     const WishlistScreen(),
+    const CommissionScreen(),
     const SettingsScreen(),
   ];
 }

@@ -1,5 +1,7 @@
 import 'package:art_selling_platform/common/appbar/appbar.dart';
 import 'package:art_selling_platform/common/custom_shapes/Containers/circularContainer.dart';
+import 'package:art_selling_platform/features/art/controllers/cart_controller.dart';
+import 'package:art_selling_platform/features/art/controllers/order_controller.dart';
 import 'package:art_selling_platform/features/art/view/cart/widgets/cartItems.dart';
 import 'package:art_selling_platform/features/art/view/checkout/widgets/billingAddressSection.dart';
 import 'package:art_selling_platform/features/art/view/checkout/widgets/billingAmountSection.dart';
@@ -7,6 +9,7 @@ import 'package:art_selling_platform/features/art/view/checkout/widgets/billingP
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:art_selling_platform/utils/helpers/helper.dart';
+import 'package:art_selling_platform/utils/loaders/loaders.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -16,9 +19,9 @@ class CheckOutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final cartController = CartController.instance;
+    final cartController = CartController.instance;
 
-    // final orderController = Get.put(OrderController());
+    final orderController = Get.put(OrderController());
     final bool isDark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: TAppbar(
@@ -73,15 +76,16 @@ class CheckOutScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: ElevatedButton(
-            onPressed: () {}
-            //  cartController.totalCartPrice.value > 0
-            //     ? () => orderController
-            //         .processOrder(cartController.findTotalPrice())
-            //     : () => TLoaders.warningSnackBar(
-            //         title: "Empty Cart",
-            //         message: "Add items in the cart in order to proceed")
-            ,
-            child: Text("حسابك 10000 ريال")),
+            onPressed: () {
+              cartController.totalCartPrice.value > 0.0
+                  ? orderController
+                      .processOrder(cartController.findTotalPrice())
+                  : TLoaders.warningSnackBar(
+                      title: "قائمة المشرتيات فارغة",
+                      message: "اضف مشتريات لتتمكن من تنفيذ عمليات الشراء");
+            },
+            child: Text(
+                " حسابك ${cartController.findTotalPrice().toString()}   ريال")),
       ),
     );
   }

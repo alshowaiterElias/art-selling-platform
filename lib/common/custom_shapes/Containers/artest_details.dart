@@ -5,6 +5,7 @@ import 'package:art_selling_platform/features/art/models/artest_model.dart';
 import 'package:art_selling_platform/utils/constants/enums.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 class TArtestDetails extends StatelessWidget {
   const TArtestDetails({
@@ -12,11 +13,13 @@ class TArtestDetails extends StatelessWidget {
     this.onTap,
     this.showBorder = true,
     required this.artest,
+    this.showChat,
   });
 
   final ArtestModel artest;
   final void Function()? onTap;
   final bool showBorder;
+  final bool? showChat;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +57,18 @@ class TArtestDetails extends StatelessWidget {
                   )
                 ],
               ),
-            )
+            ),
+            if (showChat == true)
+              const Expanded(
+                flex: 2,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Icon(Iconsax.message),
+                    Text("إبدا المحادثة مع"),
+                  ],
+                ),
+              )
           ],
         ),
       ),

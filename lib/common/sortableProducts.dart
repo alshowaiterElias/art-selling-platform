@@ -36,7 +36,6 @@ class TSortableProducts extends StatelessWidget {
               .toList(),
           onChanged: (value) {
             controller.sortProducts(value!);
-            print(controller.products[0].price);
           },
         ),
         const SizedBox(height: TSizes.spaceBtwSections),

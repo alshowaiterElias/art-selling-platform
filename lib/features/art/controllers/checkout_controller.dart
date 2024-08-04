@@ -28,7 +28,7 @@ class CheckoutController extends GetxController {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TSectionHeader(
-                title: "Select payment method",
+                title: "اختر طريقة الدفع",
                 showActionButton: false,
                 onPressd: () {},
               ),

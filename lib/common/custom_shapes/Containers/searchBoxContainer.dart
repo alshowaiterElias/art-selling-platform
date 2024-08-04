@@ -42,18 +42,19 @@ class TSearchContainer extends StatelessWidget {
               borderRadius: BorderRadius.circular(TSizes.cardRaduisLg),
               border: showBorder ? Border.all(color: TColors.grey) : null),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Icon(
-                icon,
-                color: TColors.darkerGrey,
+              Text(
+                text,
+                style: Theme.of(context).textTheme.bodySmall,
               ),
               const SizedBox(
                 width: TSizes.spaceBtwItems,
               ),
-              Text(
-                text,
-                style: Theme.of(context).textTheme.bodySmall,
-              )
+              Icon(
+                icon,
+                color: TColors.darkerGrey,
+              ),
             ],
           ),
         ),
