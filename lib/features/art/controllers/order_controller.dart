@@ -3,13 +3,13 @@ import 'package:art_selling_platform/data/repos/order.dart';
 import 'package:art_selling_platform/features/art/controllers/cart_controller.dart';
 import 'package:art_selling_platform/features/art/controllers/checkout_controller.dart';
 import 'package:art_selling_platform/features/art/models/order_model.dart';
-import 'package:art_selling_platform/features/authentication/views/signup/widgets/success_Screen.dart';
+import 'package:art_selling_platform/features/authentication/views/signup/widgets/success_screen.dart';
 import 'package:art_selling_platform/features/personalization/controllers/address_controller.dart';
 import 'package:art_selling_platform/nav.dart';
 import 'package:art_selling_platform/utils/constants/enums.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/loaders/loaders.dart';
-import 'package:art_selling_platform/utils/popups/fullScreenLoader.dart';
+import 'package:art_selling_platform/utils/popups/full_screen_loader.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';

@@ -1,18 +1,18 @@
-import 'package:art_selling_platform/common/CustomIcons/notificationIcon.dart';
-import 'package:art_selling_platform/common/appbar/appbar.dart';
-import 'package:art_selling_platform/common/appbar/tabBar.dart';
+import 'package:art_selling_platform/common/CustomIcons/notification_icon.dart';
+import 'package:art_selling_platform/common/appbar/app_bar.dart';
+import 'package:art_selling_platform/common/appbar/tab_bar.dart';
 
 import 'package:art_selling_platform/common/custom_shapes/Containers/artest_details.dart';
 import 'package:art_selling_platform/common/shimmer/artests_shimmer.dart';
 import 'package:art_selling_platform/features/art/controllers/artest_controller.dart';
 import 'package:art_selling_platform/features/art/controllers/catagory_controller.dart';
-import 'package:art_selling_platform/features/art/view/artests/artestProduts.dart';
+import 'package:art_selling_platform/features/art/view/artests/artest_produts.dart';
 import 'package:art_selling_platform/features/art/view/artests/artests.dart';
 import 'package:art_selling_platform/features/art/view/store/widgets/category_tab.dart';
 import 'package:art_selling_platform/utils/helpers/helper.dart';
 import 'package:flutter/material.dart';
-import 'package:art_selling_platform/common/layout/gridLayout.dart';
-import 'package:art_selling_platform/common/texts/sectionHeader.dart';
+import 'package:art_selling_platform/common/layout/grid_layout.dart';
+import 'package:art_selling_platform/common/texts/section_header.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:get/get.dart';

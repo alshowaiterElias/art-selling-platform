@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:art_selling_platform/data/repos/authentication.dart';
-import 'package:art_selling_platform/features/authentication/views/signup/widgets/success_Screen.dart';
+import 'package:art_selling_platform/features/authentication/views/signup/widgets/success_screen.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/loaders/loaders.dart';
 import 'package:firebase_auth/firebase_auth.dart';

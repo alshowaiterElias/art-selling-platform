@@ -1,14 +1,14 @@
-import 'package:art_selling_platform/common/appbar/appbar.dart';
-import 'package:art_selling_platform/common/custom_shapes/Containers/primaryHeaderContainer.dart';
-import 'package:art_selling_platform/common/user/settingMenu.dart';
-import 'package:art_selling_platform/common/user/userProfileTile.dart';
+import 'package:art_selling_platform/common/appbar/app_bar.dart';
+import 'package:art_selling_platform/common/custom_shapes/Containers/primary_header_container.dart';
+import 'package:art_selling_platform/common/user/setting_menu.dart';
+import 'package:art_selling_platform/common/user/user_profile_tile.dart';
 import 'package:art_selling_platform/data/repos/authentication.dart';
 import 'package:art_selling_platform/features/art/view/orders/orders.dart';
 import 'package:art_selling_platform/features/personalization/views/addresses/addresses.dart';
 import 'package:art_selling_platform/features/personalization/views/settings/upload.dart';
 import 'package:flutter/material.dart';
 
-import 'package:art_selling_platform/common/texts/sectionHeader.dart';
+import 'package:art_selling_platform/common/texts/section_header.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:get/get.dart';

@@ -3,8 +3,8 @@ import 'package:art_selling_platform/features/personalization/controllers/user_c
 import 'package:art_selling_platform/features/personalization/views/profile/profile.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/loaders/loaders.dart';
-import 'package:art_selling_platform/utils/network/networkManager.dart';
-import 'package:art_selling_platform/utils/popups/fullScreenLoader.dart';
+import 'package:art_selling_platform/utils/network/network_manager.dart';
+import 'package:art_selling_platform/utils/popups/full_screen_loader.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 

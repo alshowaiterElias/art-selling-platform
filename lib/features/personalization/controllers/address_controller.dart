@@ -1,14 +1,14 @@
-import 'package:art_selling_platform/common/texts/sectionHeader.dart';
+import 'package:art_selling_platform/common/texts/section_header.dart';
 import 'package:art_selling_platform/data/repos/address.dart';
 import 'package:art_selling_platform/features/personalization/models/address_model.dart';
 import 'package:art_selling_platform/features/personalization/views/addresses/addresses.dart';
-import 'package:art_selling_platform/features/personalization/views/addresses/widgets/signleAddress.dart';
+import 'package:art_selling_platform/features/personalization/views/addresses/widgets/signle_address.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:art_selling_platform/utils/helpers/cloud_helper_function.dart';
 import 'package:art_selling_platform/utils/loaders/loaders.dart';
-import 'package:art_selling_platform/utils/network/networkManager.dart';
-import 'package:art_selling_platform/utils/popups/fullScreenLoader.dart';
+import 'package:art_selling_platform/utils/network/network_manager.dart';
+import 'package:art_selling_platform/utils/popups/full_screen_loader.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';

@@ -2,10 +2,10 @@ import 'package:art_selling_platform/utils/themes/custom_themes/appbar_theme.dar
 import 'package:art_selling_platform/utils/themes/custom_themes/text_theme.dart';
 import 'package:flutter/material.dart';
 
-import 'custom_themes/TBotton_sheet_theme.dart';
-import 'custom_themes/TCheckBoxTheme.dart';
-import 'custom_themes/TelevatedButtonTheme.dart';
-import 'custom_themes/chipTheme.dart';
+import 'custom_themes/t_botton_sheet_theme.dart';
+import 'custom_themes/t_check_box_theme.dart';
+import 'custom_themes/t_elevated_button_theme.dart';
+import 'custom_themes/chip_theme.dart';
 import 'custom_themes/outlined_button_theme.dart';
 import 'custom_themes/text_filed_theme.dart';
 

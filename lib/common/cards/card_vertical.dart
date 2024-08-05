@@ -1,5 +1,5 @@
-import 'package:art_selling_platform/common/custom_shapes/Containers/circularContainer.dart';
-import 'package:art_selling_platform/common/styles/TShadowStyle.dart';
+import 'package:art_selling_platform/common/custom_shapes/Containers/circular_container.dart';
+import 'package:art_selling_platform/common/styles/t_shadow_style.dart';
 import 'package:art_selling_platform/common/texts/art_title.dart';
 import 'package:art_selling_platform/common/texts/art_title_with_icon.dart';
 import 'package:art_selling_platform/features/art/controllers/cart_controller.dart';
@@ -8,9 +8,9 @@ import 'package:art_selling_platform/features/art/models/product_model.dart';
 import 'package:art_selling_platform/features/art/view/art_Details/art_details.dart';
 import 'package:flutter/material.dart';
 import 'package:art_selling_platform/common/icons/favoirate_icon.dart';
-import 'package:art_selling_platform/common/images/roundedImages.dart';
+import 'package:art_selling_platform/common/images/rounded_images.dart';
 
-import 'package:art_selling_platform/common/texts/priceText.dart';
+import 'package:art_selling_platform/common/texts/price_text.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 
 import 'package:art_selling_platform/utils/constants/sizes.dart';

@@ -1,9 +1,9 @@
 import 'package:art_selling_platform/data/repos/user.dart';
 import 'package:art_selling_platform/features/authentication/views/login/login.dart';
-import 'package:art_selling_platform/features/authentication/views/onBoarding/onBoarding.dart';
-import 'package:art_selling_platform/features/authentication/views/signup/verfiy_Email.dart';
+import 'package:art_selling_platform/features/authentication/views/onBoarding/on_boarding.dart';
+import 'package:art_selling_platform/features/authentication/views/signup/verfiy_email.dart';
 import 'package:art_selling_platform/nav.dart';
-import 'package:art_selling_platform/utils/local_storage/localStorage.dart';
+import 'package:art_selling_platform/utils/local_storage/local_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';

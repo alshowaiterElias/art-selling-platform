@@ -1,5 +1,5 @@
-import 'package:art_selling_platform/common/custom_shapes/Containers/circularContainer.dart';
-import 'package:art_selling_platform/common/images/circularImages.dart';
+import 'package:art_selling_platform/common/custom_shapes/Containers/circular_container.dart';
+import 'package:art_selling_platform/common/images/circular_images.dart';
 import 'package:art_selling_platform/common/texts/art_title_with_icon.dart';
 import 'package:art_selling_platform/features/art/models/artest_model.dart';
 import 'package:art_selling_platform/utils/constants/enums.dart';

@@ -1,7 +1,7 @@
-import 'package:art_selling_platform/common/animations/loaderAnimation.dart';
-import 'package:art_selling_platform/common/appbar/appbar.dart';
+import 'package:art_selling_platform/common/animations/loader_animation.dart';
+import 'package:art_selling_platform/common/appbar/app_bar.dart';
 import 'package:art_selling_platform/features/art/controllers/cart_controller.dart';
-import 'package:art_selling_platform/features/art/view/cart/widgets/cartItems.dart';
+import 'package:art_selling_platform/features/art/view/cart/widgets/cart_items.dart';
 import 'package:art_selling_platform/features/art/view/checkout/checkout.dart';
 import 'package:art_selling_platform/nav.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';

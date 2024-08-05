@@ -1,4 +1,4 @@
-import 'package:art_selling_platform/common/icons/TCircularIcon.dart';
+import 'package:art_selling_platform/common/icons/t_circular_icon.dart';
 import 'package:art_selling_platform/features/art/controllers/favourites_controller.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';

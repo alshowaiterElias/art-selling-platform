@@ -1,4 +1,4 @@
-import 'package:art_selling_platform/common/layout/gridLayout.dart';
+import 'package:art_selling_platform/common/layout/grid_layout.dart';
 import 'package:art_selling_platform/common/shimmer/shimmer_effect.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';

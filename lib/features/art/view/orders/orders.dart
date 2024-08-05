@@ -1,5 +1,5 @@
-import 'package:art_selling_platform/common/appbar/appbar.dart';
-import 'package:art_selling_platform/features/art/view/orders/widgets/orderList.dart';
+import 'package:art_selling_platform/common/appbar/app_bar.dart';
+import 'package:art_selling_platform/features/art/view/orders/widgets/order_list.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 

@@ -1,6 +1,6 @@
 import 'package:art_selling_platform/features/art/view/home/home.dart';
 import 'package:art_selling_platform/features/art/view/store/store.dart';
-import 'package:art_selling_platform/features/art/view/wishList/wishList.dart';
+import 'package:art_selling_platform/features/art/view/wishList/wish_list.dart';
 import 'package:art_selling_platform/features/personalization/views/settings/settings.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/helpers/helper.dart';

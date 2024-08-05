@@ -1,7 +1,7 @@
-import 'package:art_selling_platform/common/appbar/appbar.dart';
+import 'package:art_selling_platform/common/appbar/app_bar.dart';
 import 'package:art_selling_platform/features/personalization/controllers/address_controller.dart';
-import 'package:art_selling_platform/features/personalization/views/addresses/addNewAddress.dart';
-import 'package:art_selling_platform/features/personalization/views/addresses/widgets/signleAddress.dart';
+import 'package:art_selling_platform/features/personalization/views/addresses/add_new_address.dart';
+import 'package:art_selling_platform/features/personalization/views/addresses/widgets/signle_address.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:art_selling_platform/utils/helpers/cloud_helper_function.dart';

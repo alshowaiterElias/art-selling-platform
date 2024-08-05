@@ -1,5 +1,5 @@
 import 'package:art_selling_platform/common/cart/payment_tile.dart';
-import 'package:art_selling_platform/common/texts/sectionHeader.dart';
+import 'package:art_selling_platform/common/texts/section_header.dart';
 import 'package:art_selling_platform/features/personalization/models/payment_method_model.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';

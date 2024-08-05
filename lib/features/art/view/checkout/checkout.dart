@@ -1,11 +1,11 @@
-import 'package:art_selling_platform/common/appbar/appbar.dart';
-import 'package:art_selling_platform/common/custom_shapes/Containers/circularContainer.dart';
+import 'package:art_selling_platform/common/appbar/app_bar.dart';
+import 'package:art_selling_platform/common/custom_shapes/Containers/circular_container.dart';
 import 'package:art_selling_platform/features/art/controllers/cart_controller.dart';
 import 'package:art_selling_platform/features/art/controllers/order_controller.dart';
-import 'package:art_selling_platform/features/art/view/cart/widgets/cartItems.dart';
-import 'package:art_selling_platform/features/art/view/checkout/widgets/billingAddressSection.dart';
-import 'package:art_selling_platform/features/art/view/checkout/widgets/billingAmountSection.dart';
-import 'package:art_selling_platform/features/art/view/checkout/widgets/billingPaymentSection.dart';
+import 'package:art_selling_platform/features/art/view/cart/widgets/cart_items.dart';
+import 'package:art_selling_platform/features/art/view/checkout/widgets/billing_address_section.dart';
+import 'package:art_selling_platform/features/art/view/checkout/widgets/billing_amount_section.dart';
+import 'package:art_selling_platform/features/art/view/checkout/widgets/billing_payment_section.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:art_selling_platform/utils/helpers/helper.dart';

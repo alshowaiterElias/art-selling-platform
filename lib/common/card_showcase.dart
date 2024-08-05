@@ -1,4 +1,4 @@
-import 'package:art_selling_platform/common/custom_shapes/Containers/circularContainer.dart';
+import 'package:art_selling_platform/common/custom_shapes/Containers/circular_container.dart';
 import 'package:art_selling_platform/common/custom_shapes/Containers/artest_details.dart';
 import 'package:art_selling_platform/common/shimmer/shimmer_effect.dart';
 import 'package:art_selling_platform/features/art/models/artest_model.dart';

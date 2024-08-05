@@ -1,9 +1,9 @@
 import 'package:art_selling_platform/data/repos/authentication.dart';
-import 'package:art_selling_platform/features/authentication/views/password_config/resetPassword.dart';
+import 'package:art_selling_platform/features/authentication/views/password_config/reset_password.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/loaders/loaders.dart';
-import 'package:art_selling_platform/utils/network/networkManager.dart';
-import 'package:art_selling_platform/utils/popups/fullScreenLoader.dart';
+import 'package:art_selling_platform/utils/network/network_manager.dart';
+import 'package:art_selling_platform/utils/popups/full_screen_loader.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';

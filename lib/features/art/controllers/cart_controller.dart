@@ -1,7 +1,7 @@
 import 'package:art_selling_platform/features/art/models/cart_item.dart';
 import 'package:art_selling_platform/features/art/models/product_model.dart';
 import 'package:art_selling_platform/utils/loaders/loaders.dart';
-import 'package:art_selling_platform/utils/local_storage/localStorage.dart';
+import 'package:art_selling_platform/utils/local_storage/local_storage.dart';
 import 'package:get/get.dart';
 
 class CartController extends GetxController {

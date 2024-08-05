@@ -1,4 +1,4 @@
-import 'package:art_selling_platform/common/appbar/appbar.dart';
+import 'package:art_selling_platform/common/appbar/app_bar.dart';
 import 'package:art_selling_platform/features/personalization/controllers/update_name_controller.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:art_selling_platform/utils/validators/validiator.dart';

@@ -1,9 +1,9 @@
-import 'package:art_selling_platform/common/texts/sectionHeader.dart';
+import 'package:art_selling_platform/common/texts/section_header.dart';
 import 'package:art_selling_platform/features/art/models/product_model.dart';
-import 'package:art_selling_platform/features/art/view/art_Details/widgets/bottomNavAddToCart.dart';
+import 'package:art_selling_platform/features/art/view/art_Details/widgets/bottom_nav_add_to_cart.dart';
 import 'package:art_selling_platform/features/art/view/art_Details/widgets/art_details_with_image_slider.dart';
 import 'package:art_selling_platform/features/art/view/art_Details/widgets/art_meta_data.dart';
-import 'package:art_selling_platform/features/art/view/art_Details/widgets/ratingAndShare.dart';
+import 'package:art_selling_platform/features/art/view/art_Details/widgets/rating_and_share.dart';
 import 'package:art_selling_platform/features/art/view/art_reviews/art_reviews.dart';
 import 'package:art_selling_platform/features/art/view/checkout/checkout.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';

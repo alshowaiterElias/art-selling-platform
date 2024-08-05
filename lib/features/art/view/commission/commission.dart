@@ -1,8 +1,9 @@
-import 'package:art_selling_platform/common/appbar/appbar.dart';
+import 'package:art_selling_platform/common/appbar/app_bar.dart';
 import 'package:art_selling_platform/common/custom_shapes/Containers/artest_details.dart';
-import 'package:art_selling_platform/common/custom_shapes/Containers/searchBoxContainer.dart';
+import 'package:art_selling_platform/common/custom_shapes/Containers/search_box_container.dart';
 import 'package:art_selling_platform/common/shimmer/horizantal_shimmer_effect.dart';
 import 'package:art_selling_platform/features/art/controllers/artest_controller.dart';
+import 'package:art_selling_platform/features/art/view/chat/chat.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,6 +51,8 @@ class CommissionScreen extends StatelessWidget {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return TArtestDetails(
+                          onTap: () => Get.to(() => ChatScreen(
+                              artest: controller.featuredArtests[index])),
                           showChat: true,
                           artest: controller.featuredArtests[index]);
                     },

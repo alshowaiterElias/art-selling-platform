@@ -1,10 +1,10 @@
-import 'package:art_selling_platform/common/appbar/appbar.dart';
-import 'package:art_selling_platform/common/images/circularImages.dart';
+import 'package:art_selling_platform/common/appbar/app_bar.dart';
+import 'package:art_selling_platform/common/images/circular_images.dart';
 import 'package:art_selling_platform/common/shimmer/shimmer_effect.dart';
-import 'package:art_selling_platform/common/texts/sectionHeader.dart';
+import 'package:art_selling_platform/common/texts/section_header.dart';
 import 'package:art_selling_platform/features/personalization/controllers/user_controller.dart';
 import 'package:art_selling_platform/features/personalization/views/profile/widgets/change_name.dart';
-import 'package:art_selling_platform/features/personalization/views/profile/widgets/profileMenu.dart';
+import 'package:art_selling_platform/features/personalization/views/profile/widgets/profile_menu.dart';
 import 'package:art_selling_platform/utils/constants/colors.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';

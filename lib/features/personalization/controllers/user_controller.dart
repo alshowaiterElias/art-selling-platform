@@ -1,13 +1,13 @@
 import 'package:art_selling_platform/data/repos/authentication.dart';
 import 'package:art_selling_platform/data/repos/user.dart';
-import 'package:art_selling_platform/features/authentication/models/userModel.dart';
+import 'package:art_selling_platform/features/authentication/models/user_model.dart';
 import 'package:art_selling_platform/features/authentication/views/login/login.dart';
 import 'package:art_selling_platform/features/personalization/views/profile/widgets/re_authenticate_user.dart';
 import 'package:art_selling_platform/utils/constants/image_strings.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:art_selling_platform/utils/loaders/loaders.dart';
-import 'package:art_selling_platform/utils/network/networkManager.dart';
-import 'package:art_selling_platform/utils/popups/fullScreenLoader.dart';
+import 'package:art_selling_platform/utils/network/network_manager.dart';
+import 'package:art_selling_platform/utils/popups/full_screen_loader.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

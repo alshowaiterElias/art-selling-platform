@@ -1,10 +1,10 @@
 import 'package:art_selling_platform/common/cards/card_vertical.dart';
-import 'package:art_selling_platform/common/layout/gridLayout.dart';
+import 'package:art_selling_platform/common/layout/grid_layout.dart';
 import 'package:art_selling_platform/common/shimmer/vertical_product_shimmer.dart';
-import 'package:art_selling_platform/common/texts/sectionHeader.dart';
+import 'package:art_selling_platform/common/texts/section_header.dart';
 import 'package:art_selling_platform/features/art/controllers/catagory_controller.dart';
 import 'package:art_selling_platform/features/art/models/catagory_model.dart';
-import 'package:art_selling_platform/features/art/view/allProducts/allProducts.dart';
+import 'package:art_selling_platform/features/art/view/all_products/all_products.dart';
 import 'package:art_selling_platform/features/art/view/store/widgets/category_artest.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:art_selling_platform/utils/helpers/cloud_helper_function.dart';

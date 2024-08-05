@@ -1,6 +1,6 @@
-import 'package:art_selling_platform/common/login_signup/dividerForm.dart';
-import 'package:art_selling_platform/common/login_signup/socialMedia.dart';
-import 'package:art_selling_platform/features/authentication/views/signup/widgets/signupForm.dart';
+import 'package:art_selling_platform/common/login_signup/divider_form.dart';
+import 'package:art_selling_platform/common/login_signup/social_media.dart';
+import 'package:art_selling_platform/features/authentication/views/signup/widgets/signup_form.dart';
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 

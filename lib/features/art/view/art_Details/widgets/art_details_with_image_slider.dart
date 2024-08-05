@@ -1,5 +1,5 @@
-import 'package:art_selling_platform/common/appbar/appbar.dart';
-import 'package:art_selling_platform/common/custom_shapes/Curved_Edges/TCurvedEdgesWidget.dart';
+import 'package:art_selling_platform/common/appbar/app_bar.dart';
+import 'package:art_selling_platform/common/custom_shapes/Curved_Edges/t_curved_edges_widget.dart';
 import 'package:art_selling_platform/common/icons/favoirate_icon.dart';
 import 'package:art_selling_platform/features/art/controllers/image_controller.dart';
 import 'package:art_selling_platform/features/art/models/product_model.dart';
