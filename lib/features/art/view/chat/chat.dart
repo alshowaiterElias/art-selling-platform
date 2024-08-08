@@ -1,4 +1,5 @@
 import 'package:art_selling_platform/common/appbar/app_bar.dart';
+import 'package:art_selling_platform/common/icons/deal_choice.dart';
 import 'package:art_selling_platform/data/repos/authentication.dart';
 import 'package:art_selling_platform/features/art/controllers/message_controller.dart';
 import 'package:art_selling_platform/features/art/models/artest_model.dart';
@@ -7,6 +8,7 @@ import 'package:art_selling_platform/features/art/view/chat/widgets/chat_bubble.
 import 'package:art_selling_platform/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key, required this.artest});
@@ -25,45 +27,72 @@ class ChatScreen extends StatelessWidget {
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
-        body: Obx(() {
-          if (controller.isLoading.value) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          return Column(
-            children: [
-              Expanded(
-                child: ListView.builder(
-                  itemCount: controller.messages.length,
-                  itemBuilder: (context, index) {
-                    return _buildMessageItem(controller.messages[index]);
-                  },
+        body: Padding(
+          padding: const EdgeInsets.all(TSizes.sm),
+          child: Obx(() {
+            if (controller.isLoading.value) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            return Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: controller.messages.length,
+                    itemBuilder: (context, index) {
+                      return _buildMessageItem(controller.messages[index]);
+                    },
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
+                Column(
                   children: [
-                    IconButton(
-                        onPressed: () async {
-                          await controller.sendMessage(artest.id);
-                        },
-                        icon: const Icon(
-                          Icons.arrow_upward,
-                          size: 40,
-                        )),
-                    Expanded(
-                      child: TextField(
-                        controller: controller.messageText,
-                        obscureText: false,
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        DealChoice(
+                          icon: Iconsax.arrange_square,
+                          choice: "عقد اتفاق",
+                        ),
+                        DealChoice(
+                          icon: Iconsax.timer,
+                          choice: "تحديد الوقت",
+                        ),
+                        DealChoice(
+                          icon: Iconsax.dollar_circle,
+                          choice: "تحديد السعر",
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: TSizes.spaceBtwItems,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                        children: [
+                          IconButton(
+                              onPressed: () async {
+                                await controller.sendMessage(artest.id);
+                              },
+                              icon: const Icon(
+                                Icons.arrow_upward,
+                                size: 40,
+                              )),
+                          Expanded(
+                            child: TextField(
+                              controller: controller.messageText,
+                              obscureText: false,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
-              ),
-              const SizedBox(height: TSizes.spaceBtwItems)
-            ],
-          );
-        }));
+                const SizedBox(height: TSizes.spaceBtwItems)
+              ],
+            );
+          }),
+        ));
   }
 }
 

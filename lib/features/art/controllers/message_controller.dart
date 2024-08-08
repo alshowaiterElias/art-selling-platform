@@ -47,17 +47,14 @@ class MessageController extends GetxController {
     }
   }
 
-  Future<List<MessageModel>> getMessages(
-      String userId, String otherPersonId) async {
+  Future<void> getMessages(String artestId, String userId) async {
     try {
       isLoading.value = true;
-      final messages = await chatRepo.getMessages(userId, otherPersonId);
+      final messages = await chatRepo.getMessages(artestId, userId);
       this.messages.assignAll(messages);
       this.messages.refresh();
-      return messages;
     } catch (e) {
       TLoaders.errorSnackBar(title: "يا ساتر", message: e.toString());
-      return [];
     } finally {
       isLoading.value = false;
     }

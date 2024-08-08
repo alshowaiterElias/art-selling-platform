@@ -22,10 +22,9 @@ class ChatRepo extends GetxController {
   }
 
   // get messages
-  Future<List<MessageModel>> getMessages(
-      String userId, String otherPersonId) async {
+  Future<List<MessageModel>> getMessages(String artestId, String userId) async {
     try {
-      List<String> ids = [userId, otherPersonId];
+      List<String> ids = [artestId, userId];
       ids.sort();
       String chatroomId = ids.join("_");
 
